@@ -41,7 +41,7 @@ public struct ToolbarButton<Content: View>: ToolbarContent {
 }
 
 @available(OSX 11.0, iOS 14.0, *)
-public struct ToolbarTitle<Content: View>: ToolbarContent {
+public struct ToolbarTitle: ToolbarContent {
     public let title : LocalizedStringKey
     public let image : Image?
     public let font  : Font
