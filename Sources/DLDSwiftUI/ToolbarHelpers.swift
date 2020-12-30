@@ -8,35 +8,39 @@
 import SwiftUI
 
 @available(OSX 11.0, iOS 14.0, *)
-public struct ToolbarButton<Content: View>: ToolbarContent {
-    public let placement : ToolbarItemPlacement
-    public let presented : Bool
-    public let content   : () -> Content
+public struct ToolbarButton: ToolbarContent {
+    public let placement   : ToolbarItemPlacement
+    public let title       : LocalizedStringKey
+    public let systemImage : String?
+    public let presented   : Bool
+    public let action      : () -> Void
     
-    public init(placement: ToolbarItemPlacement = .automatic, presented: Bool = true, @ViewBuilder content: @escaping () -> Content) {
-        self.placement = placement
-        self.presented = presented
-        self.content   = content
+    public init(placement: ToolbarItemPlacement = .automatic, title: LocalizedStringKey, systemImage: String? = nil, presented: Bool = true, action: @escaping () -> Void) {
+        self.placement   = placement
+        self.title       = title
+        self.systemImage = systemImage
+        self.presented   = presented
+        self.action      = action
     }
     
     public var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
             if presented {
-                content()
+                if let sysImg = systemImage {
+                    LabeledButton(title, systemImage: sysImg, action: action)
+                } else {
+                    Button(title, action: action)
+                }
             }
         }
     }
     
     public static func cancel(_ action: @escaping () -> Void) -> ToolbarButton {
-        ToolbarButton(placement: .cancellationAction, presented: true) {
-            Button("CANCEL", action: action) as! Content
-        }
+        ToolbarButton(placement: .cancellationAction, title: "cancel", action: action)
     }
     
     public static func confirm(title: LocalizedStringKey, action: @escaping () -> Void) -> ToolbarButton {
-        ToolbarButton(placement: .confirmationAction, presented: true) {
-            Button(title, action: action) as! Content
-        }
+        ToolbarButton(placement: .confirmationAction, title: title, action: action)
     }
 }
 
