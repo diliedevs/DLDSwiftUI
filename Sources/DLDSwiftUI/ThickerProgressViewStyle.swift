@@ -25,10 +25,18 @@ public struct ThickerProgressViewStyle: ProgressViewStyle {
     }
     
     public var thickness      : CGFloat
-    public var labelPlacement : LabelPlacement = .topLeading
-    public var labelSpacing   : CGFloat?       = nil // swiftlint:disable:this redundant_optional_initialization
-    public var accentColor    : Color          = .accentColor
-    public var font           : Font           = .body
+    public var labelPlacement : LabelPlacement
+    public var labelSpacing   : CGFloat?
+    public var accentColor    : Color
+    public var font           : Font
+    
+    public init(thickness: CGFloat = 2, labelPlacement: ThickerProgressViewStyle.LabelPlacement = .topLeading, labelSpacing: CGFloat? = nil, accentColor: Color = .accentColor, font: Font = .body) {
+        self.thickness      = thickness
+        self.labelPlacement = labelPlacement
+        self.labelSpacing   = labelSpacing
+        self.accentColor    = accentColor
+        self.font           = font
+    }
     
     public func makeBody(configuration: Configuration) -> some View {
         VStack(spacing: labelSpacing) {
