@@ -14,7 +14,7 @@ public extension Alert {
         public let title   : LocalizedStringKey
         public let message : LocalizedStringKey
         
-        init(_ title: LocalizedStringKey, message: LocalizedStringKey) {
+        public init(_ title: LocalizedStringKey, message: LocalizedStringKey) {
             self.title   = title
             self.message = message
         }
