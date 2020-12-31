@@ -34,10 +34,12 @@ public extension View {
         self.font(font).foregroundColor(color)
     }
     
+    #if os(iOS)
     /// Hides the large navigation bar title.
     func largeNavBarTitleHidden() -> some View {
         self.navigationBarTitle("", displayMode: .inline)
     }
+    #endif
     
     // MARK: - Frame
     
