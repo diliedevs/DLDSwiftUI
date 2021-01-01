@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(OSX 11.0, iOS 14.0, *)
 public extension Binding where Value == PresentationMode {
-    /// Dismisses the view that is presented.
+    /// Dismisses the view that is presented when the binding is a `PresentationMode`.
     func dismiss() {
         wrappedValue.dismiss()
     }

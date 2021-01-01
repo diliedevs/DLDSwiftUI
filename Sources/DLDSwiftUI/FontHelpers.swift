@@ -9,13 +9,19 @@ import SwiftUI
 
 @available(OSX 11.0, iOS 14.0, *)
 public extension Font {
+    /// Gets a system font with the given style, design, weight and optionally in italics.
+    /// - Parameters:
+    ///   - style: The dynamic text style for the font.
+    ///   - design: The design to use for the font.
+    ///   - weight: The weight of the font.
+    ///   - italic: Whether or not to add italics to the font.
     private static func system(_ style: TextStyle, design: Design, weight: Weight, italic: Bool = false) -> Font {
         let sf = system(style, design: design).weight(weight)
         return italic ? sf.italic() : sf
     }
     
     // MARK: - Rounded
-    /// Returns a system font with the given text style and the given weight in the rounded design.
+    /// Gets a system font with the given text style and the given weight in the rounded design.
     /// - Parameters:
     ///   - style: The dynamic text style to use. Default is `body`.
     ///   - weight: The weight of the font. Default is `regular`.
@@ -24,14 +30,14 @@ public extension Font {
     }
     
     // MARK: - Rounded Bold
-    /// Returns a system font with the given text style in the bold weight with a rounded design.
+    /// Gets a system font with the given text style in the bold weight with a rounded design.
     ///   - style: The dynamic text style to use. Default is `body`.
     static func roundedBold(_ style: TextStyle = .body) -> Font {
         system(style, design: .rounded, weight: .bold)
     }
     
     // MARK: - Italic
-    /// Returns a system font with the fiven text style and the given weight in italics.
+    /// Gets a system font with the given text style and the given weight in italics.
     /// - Parameters:
     ///   - style: The dynamic text style to use. Default is `body`.
     ///   - weight: The weight of the font. Default is `regular`.
@@ -42,7 +48,7 @@ public extension Font {
     // MARK: - Large Title
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a large title text style and the given weight, design and italic specifications.
+    /// Gets a system font with a large title text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -50,7 +56,7 @@ public extension Font {
     static func largeTitle(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.largeTitle, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a large title text style and the given weight, and design specifications.
+    /// Gets a system font with a large title text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -61,7 +67,7 @@ public extension Font {
     // MARK: - Title
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a title text style and the given weight, design and italic specifications.
+    /// Gets a system font with a title text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -69,7 +75,7 @@ public extension Font {
     static func title(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.title, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a title text style and the given weight, and design specifications.
+    /// Gets a system font with a title text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -80,7 +86,7 @@ public extension Font {
     // MARK: - Title 2
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a title2 text style and the given weight, design and italic specifications.
+    /// Gets a system font with a second level hierarchical heading text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -88,7 +94,7 @@ public extension Font {
     static func title2(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.title2, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a title2 text style and the given weight, and design specifications.
+    /// Gets a system font with a second level hierarchical heading text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -99,7 +105,7 @@ public extension Font {
     // MARK: - Title 3
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a title3 text style and the given weight, design and italic specifications.
+    /// Gets a system font with a third level hierarchical heading text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -107,7 +113,7 @@ public extension Font {
     static func title3(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.title3, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a title3 text style and the given weight, and design specifications.
+    /// Gets a system font with a third level hierarchical heading text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -118,7 +124,7 @@ public extension Font {
     // MARK: - Headline
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a headline text style and the given weight, design and italic specifications.
+    /// Gets a system font with a headline text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -126,7 +132,7 @@ public extension Font {
     static func headline(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.headline, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a headline text style and the given weight, and design specifications.
+    /// Gets a system font with a headline text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -137,7 +143,7 @@ public extension Font {
     // MARK: - Subheadline
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a subheadline text style and the given weight, design and italic specifications.
+    /// Gets a system font with a subheadline text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -145,7 +151,7 @@ public extension Font {
     static func subheadline(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.subheadline, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a subheadline text style and the given weight, and design specifications.
+    /// Gets a system font with a subheadline text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -156,7 +162,7 @@ public extension Font {
     // MARK: - Body
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a body text style and the given weight, design and italic specifications.
+    /// Gets a system font with a body text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -164,7 +170,7 @@ public extension Font {
     static func body(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.body, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a body text style and the given weight, and design specifications.
+    /// Gets a system font with a body text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -175,7 +181,7 @@ public extension Font {
     // MARK: - Callout
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a callout text style and the given weight, design and italic specifications.
+    /// Gets a system font with a callout text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -183,7 +189,7 @@ public extension Font {
     static func callout(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.callout, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a callout text style and the given weight, and design specifications.
+    /// Gets a system font with a callout text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -194,7 +200,7 @@ public extension Font {
     // MARK: - Footnote
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a footnote text style and the given weight, design and italic specifications.
+    /// Gets a system font with a footnote text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -202,7 +208,7 @@ public extension Font {
     static func footnote(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.footnote, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a footnote text style and the given weight, and design specifications.
+    /// Gets a system font with a footnote text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -213,7 +219,7 @@ public extension Font {
     // MARK: - Caption
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a caption text style and the given weight, design and italic specifications.
+    /// Gets a system font with a caption text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -221,7 +227,7 @@ public extension Font {
     static func caption(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.caption, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a caption text style and the given weight, and design specifications.
+    /// Gets a system font with a caption text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.
@@ -232,7 +238,7 @@ public extension Font {
     // MARK: - Caption 2
     // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
     
-    /// Returns a system font with a caption2 text style and the given weight, design and italic specifications.
+    /// Gets a system font with an alternate caption text style and the given weight, design and italic specifications.
     /// - Parameters:
     ///   - weight: The weight of the font. Default is `regular`.
     ///   - design: The design of the font. Default is `default`.
@@ -240,7 +246,7 @@ public extension Font {
     static func caption2(weight: Weight = .regular, design: Design = .default, italic: Bool = false) -> Font {
         system(.caption2, design: design, weight: weight, italic: italic)
     }
-    /// Returns a system font with a caption2 text style and the given weight, and design specifications.
+    /// Gets a system font with an alternate caption text style and the given weight, and design specifications.
     /// - Parameters:
     ///   - weight: The weight of the font.
     ///   - design: The design of the font. Default is `default`.

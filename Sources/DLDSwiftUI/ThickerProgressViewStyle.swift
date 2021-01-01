@@ -8,10 +8,14 @@
 import SwiftUI
 
 @available(OSX 11.0, iOS 14.0, *)
+/// A progress view style that indicatess its progress using a horizontal bar
+/// where the thickness of the bar can be configured as well as the label.
 public struct ThickerProgressViewStyle: ProgressViewStyle {
+    /// A set of cases indicating the vertical placement of the progress view's label.
     public enum LabelPlacement: String {
         case top, bottom, topLeading, topTrailing, bottomLeading, bottomTrailing
         
+        /// Returns the horizontal text alignment of the label.
         public var alignment: Alignment {
             switch self {
             case .top, .bottom                 : return .center
@@ -20,16 +24,30 @@ public struct ThickerProgressViewStyle: ProgressViewStyle {
             }
         }
         
+        /// Returns `true` when the placement for the label is above the progress view bar.
         public var isTop    : Bool { rawValue.hasPrefix("top") }
+        /// Returns `true` when the placement for the label is below the progress view bar.
         public var isBottom : Bool { rawValue.hasPrefix("bottom") }
     }
     
+    /// The thickness of the progress view bar.
     public var thickness      : CGFloat
+    /// The vertical placement of the progress view's label.
     public var labelPlacement : LabelPlacement
+    /// The space between the the progress view bar and it's label.
     public var labelSpacing   : CGFloat?
+    /// The accent color for the progress view bar.
     public var accentColor    : Color
+    /// The font of the progress view's label.
     public var font           : Font
     
+    /// Creates a `ThickerProgressViewStyle` with the given configuration values.
+    /// - Parameters:
+    ///   - thickness: The thickness of the progress view bar.
+    ///   - labelPlacement: The vertical placement of the progress view's label.
+    ///   - labelSpacing: The space between the the progress view bar and it's label.
+    ///   - accentColor: The accent color for the progress view bar.
+    ///   - font: The font of the progress view's label.
     public init(thickness: CGFloat = 2, labelPlacement: ThickerProgressViewStyle.LabelPlacement = .topLeading, labelSpacing: CGFloat? = nil, accentColor: Color = .accentColor, font: Font = .body) {
         self.thickness      = thickness
         self.labelPlacement = labelPlacement
