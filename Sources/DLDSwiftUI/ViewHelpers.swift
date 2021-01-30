@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-fileprivate extension BinaryFloatingPoint {
+public extension BinaryFloatingPoint {
     var cgfloat: CGFloat { CGFloat(self) }
 }
 
