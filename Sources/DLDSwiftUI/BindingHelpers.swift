@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension Binding {
     func onChange(_ perform: @escaping () -> Void) -> Binding<Value> {
         Binding(
@@ -20,7 +19,6 @@ public extension Binding {
     }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension Binding where Value == PresentationMode {
     /// Dismisses the view that is presented when the binding is a `PresentationMode`.
     func dismiss() {
@@ -28,7 +26,6 @@ public extension Binding where Value == PresentationMode {
     }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension ColorScheme {
     /// Returns `true` if the color scheme is dark.
     var isDark: Bool { self == .dark }

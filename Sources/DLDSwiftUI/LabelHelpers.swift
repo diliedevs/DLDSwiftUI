@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 /// A label style that forces the display of both the icon and title of the label.
 public struct FullLabelStyle: LabelStyle {
     public func makeBody(configuration: Configuration) -> some View {
@@ -18,7 +17,6 @@ public struct FullLabelStyle: LabelStyle {
     }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension View {
     /// Sets the default label style for labels within this view.
     func defaultLabel() -> some View {
@@ -38,7 +36,6 @@ public extension View {
     }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 /// A `Button` view with a `Label` showing both a localizable title and a `SF Symbols` icon.
 public struct LabeledButton: View {
     /// The localizable title for the button.

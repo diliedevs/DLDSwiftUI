@@ -8,7 +8,6 @@
 import SwiftUI
 
 #if os(iOS)
-@available(iOS 14.0, *)
 public typealias NavBarDisplayMode = NavigationBarItem.TitleDisplayMode
 #endif
 
@@ -16,7 +15,6 @@ public extension BinaryFloatingPoint {
     var cgfloat: CGFloat { CGFloat(self) }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension View {
     /// Erases the view type to `AnyView`.
     func asAnyView() -> AnyView {
@@ -44,12 +42,27 @@ public extension View {
         NavigationLink(destination: destination) { self }
     }
     
+    func inNavView() -> some View {
+        NavigationView {
+            self
+        }
+    }
+    
     #if os(iOS)
     /// Hides the large navigation bar title.
     func largeNavBarTitleHidden() -> some View {
         self.navigationBarTitle("", displayMode: .inline)
     }
     #endif
+    
+    // MARK: - List
+    func asInsetGroup() -> some View {
+        self.listStyle(InsetGroupedListStyle())
+    }
+    
+    func inInsetListGroup() -> some View {
+        List { self }.asInsetGroup()
+    }
     
     // MARK: - Frame
     /// Returns a view with the specified width and alignment.

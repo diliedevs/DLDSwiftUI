@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 /// A button that can be placed in the toolbar or navigation bar.
 public struct ToolbarButton: ToolbarContent {
     /// Which section of the toolbar the button should be placed in.
@@ -63,7 +62,6 @@ public struct ToolbarButton: ToolbarContent {
     }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 /// A title that can be placed prominently in the toolbar or navigation bar, with or without an image.
 public struct ToolbarTitle: ToolbarContent {
     /// The localizable title.
@@ -113,4 +111,9 @@ public struct ToolbarTitle: ToolbarContent {
             .font(font, color: color)
         }
     }
+}
+
+public extension ToolbarItemPlacement {
+    static let navLeading = Self.navigationBarLeading
+    static let navTrailing = Self.navigationBarTrailing
 }

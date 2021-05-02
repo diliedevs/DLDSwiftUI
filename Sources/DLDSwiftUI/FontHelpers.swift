@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension Font {
     /// Gets a system font with the given style, design, weight and optionally in italics.
     /// - Parameters:

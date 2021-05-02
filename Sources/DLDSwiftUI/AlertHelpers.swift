@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension Alert {
     /// A struct that holds the localizable title and message for an `Alert` and is identifiable.
     struct TitleMessage: Identifiable {
@@ -50,7 +49,6 @@ public extension Alert {
     }
 }
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension Alert.Button {
     /// Creates an alert button with the default style and a localizable title in a `Text` view.
     /// - Parameters:

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 /// A progress view style that indicatess its progress using a horizontal bar
 /// where the thickness of the bar can be configured as well as the label.
 public struct ThickerProgressViewStyle: ProgressViewStyle {

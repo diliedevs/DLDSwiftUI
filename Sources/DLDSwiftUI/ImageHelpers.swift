@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(OSX 11.0, iOS 14.0, *)
 public extension Image {
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fit its parent.
     /// - Parameters:
