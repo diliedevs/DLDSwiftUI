@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+#if os(iOS)
+@available(iOS 14.0, *)
+public typealias NavBarDisplayMode = NavigationBarItem.TitleDisplayMode
+#endif
+
 public extension BinaryFloatingPoint {
     var cgfloat: CGFloat { CGFloat(self) }
 }
@@ -34,6 +39,11 @@ public extension View {
         self.font(font).foregroundColor(color)
     }
     
+    // MARK: - Navigation
+    func navigate<Destination: View>(to destination: Destination) -> some View {
+        NavigationLink(destination: destination) { self }
+    }
+    
     #if os(iOS)
     /// Hides the large navigation bar title.
     func largeNavBarTitleHidden() -> some View {
@@ -42,7 +52,6 @@ public extension View {
     #endif
     
     // MARK: - Frame
-    
     /// Returns a view with the specified width and alignment.
     /// - Parameters:
     ///   - width: The fixed width for the resulting view.
