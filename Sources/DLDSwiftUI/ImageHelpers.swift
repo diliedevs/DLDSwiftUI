@@ -9,6 +9,8 @@
 import SwiftUI
 
 public extension Image {
+    typealias Name = String
+    
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fit its parent.
     /// - Parameters:
     ///   - capInsets: The amount the edges should be inset, set to no specific amount by default.
