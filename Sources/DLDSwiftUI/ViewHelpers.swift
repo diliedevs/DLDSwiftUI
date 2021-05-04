@@ -50,9 +50,10 @@ public extension View {
     }
     
     #if os(iOS)
-    /// Hides the large navigation bar title.
-    func largeNavBarTitleHidden() -> some View {
-        self.navigationBarTitle("", displayMode: .inline)
+    func navBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavBarDisplayMode = .automatic) -> some View {
+        self
+            .navigationTitle(titleKey)
+            .navigationBarTitleDisplayMode(displayMode)
     }
     #endif
     
