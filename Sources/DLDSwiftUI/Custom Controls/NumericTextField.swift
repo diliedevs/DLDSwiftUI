@@ -37,10 +37,10 @@ public struct NumericTextField<Value: Numeric>: View {
     public var body: some View {
         Group {
             #if os(iOS)
-            TextField(titleKey, value: value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
+            TextField(titleKey, value: $value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
                 .keyboardType(keyboardType)
             #else
-            TextField(titleKey, value: value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
+            TextField(titleKey, value: $value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
             #endif
         }
     }
