@@ -1,8 +1,9 @@
 //
-//  SwiftUIView.swift
-//  
+//  ViewHelpers.swift
+//  DLDSwiftUI
 //
 //  Created by Dionne Lie-Sam-Foek on 29/12/2020.
+//  Copyright © 2020 DiLieDevs. All rights reserved.
 //
 
 import SwiftUI
@@ -56,6 +57,7 @@ public extension View {
     #endif
     
     // MARK: - List
+    #if os(iOS)
     func asInsetGroup() -> some View {
         self.listStyle(InsetGroupedListStyle())
     }
@@ -63,6 +65,7 @@ public extension View {
     func inInsetListGroup() -> some View {
         List { self }.asInsetGroup()
     }
+    #endif
     
     // MARK: - Frame
     /// Returns a view with the specified width and alignment.

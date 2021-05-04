@@ -1,8 +1,9 @@
 //
-//  SwiftUIView.swift
-//  
+//  BindingHelpers.swift
+//  DLDSwiftUI
 //
 //  Created by Dionne Lie-Sam-Foek on 29/12/2020.
+//  Copyright © 2020 DiLieDevs. All rights reserved.
 //
 
 import SwiftUI

@@ -1,8 +1,9 @@
 //
-//  SwiftUIView.swift
-//  
+//  ToolbarHelpers.swift
+//  DLDSwiftUI
 //
 //  Created by Dionne Lie-Sam-Foek on 29/12/2020.
+//  Copyright © 2020 DiLieDevs. All rights reserved.
 //
 
 import SwiftUI
@@ -50,7 +51,7 @@ public struct ToolbarButton: ToolbarContent {
     /// Creates a toolbar button with the localizable text of *'cancel'* to represent a cancellation action for a modal interface.
     /// - Parameter action: The action to take when the user cancels out of the modal interface.
     public static func cancel(_ action: @escaping () -> Void) -> ToolbarButton {
-        ToolbarButton(placement: .cancellationAction, title: "cancel", action: action)
+        ToolbarButton(placement: .cancellationAction, title: "cancel", systemImage: nil, action: action)
     }
     
     /// Creates a toolbar button that represents a confirmation action for a modal interface.
@@ -58,10 +59,12 @@ public struct ToolbarButton: ToolbarContent {
     ///   - title: The localizable title for the confirmation button.
     ///   - action: The action to take when the user confirms the modal interface.
     public static func confirm(title: LocalizedStringKey, action: @escaping () -> Void) -> ToolbarButton {
-        ToolbarButton(placement: .confirmationAction, title: title, action: action)
+        ToolbarButton(placement: .confirmationAction, title: title, systemImage: nil, action: action)
     }
 }
 
+@available(OSX, deprecated: 11.3, message: "Use NavigationBar styling instead")
+@available(iOS, deprecated: 14.5, message: "Use NavigationBar styling instead")
 /// A title that can be placed prominently in the toolbar or navigation bar, with or without an image.
 public struct ToolbarTitle: ToolbarContent {
     /// The localizable title.
@@ -113,7 +116,9 @@ public struct ToolbarTitle: ToolbarContent {
     }
 }
 
+#if os(iOS)
 public extension ToolbarItemPlacement {
     static let navLeading = Self.navigationBarLeading
     static let navTrailing = Self.navigationBarTrailing
 }
+#endif
