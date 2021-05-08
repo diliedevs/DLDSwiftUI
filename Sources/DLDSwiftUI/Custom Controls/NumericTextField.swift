@@ -27,7 +27,7 @@ public struct NumericTextField<Value: Numeric>: View {
     ///   - formatter: The number formatter to use for conversion between the string and the value.
     ///   - onEditingChanged: The action to perform when the user begins editing the value and after the user finishes editing.
     ///   - onCommit: An action to perform when the user performs an action while the text field has focus.
-    public init(titleKey: LocalizedStringKey, value: Binding<Value>, formatter: NumberFormatter, onEditingChanged: @escaping (Bool) -> Void = { _ in }, onCommit: @escaping () -> Void = {}) {
+    public init(_ titleKey: LocalizedStringKey, value: Binding<Value>, formatter: NumberFormatter, onEditingChanged: @escaping (Bool) -> Void = { _ in }, onCommit: @escaping () -> Void = {}) {
         self.titleKey         = titleKey
         self._value           = value
         self.formatter        = formatter
@@ -44,7 +44,7 @@ public struct NumericTextField<Value: Numeric>: View {
     ///   - keyboardType: One of the keyboard types defined in the `UIKeyboardType` enumeration.
     ///   - onEditingChanged: The action to perform when the user begins editing the value and after the user finishes editing.
     ///   - onCommit: An action to perform when the user performs an action while the text field has focus.
-    public init(titleKey: LocalizedStringKey, value: Binding<Value>, formatter: NumberFormatter, keyboardType: UIKeyboardType = .decimalPad, onEditingChanged: @escaping (Bool) -> Void = { _ in }, onCommit: @escaping () -> Void = {}) {
+    public init(_ titleKey: LocalizedStringKey, value: Binding<Value>, formatter: NumberFormatter, keyboardType: UIKeyboardType = .decimalPad, onEditingChanged: @escaping (Bool) -> Void = { _ in }, onCommit: @escaping () -> Void = {}) {
         self.init(titleKey: titleKey, value: value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
         self.keyboardType = keyboardType
     }

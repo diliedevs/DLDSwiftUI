@@ -31,6 +31,10 @@ public struct ToolbarButton: ToolbarContent {
         self.action      = action
     }
     
+    public init(placement: ToolbarItemPlacement = .automatic, title: LocalizedStringKey, symbol: Symbol? = nil, presented: Bool = true, action: @escaping () -> Void) {
+        self.init(placement: placement, title: title, systemImage: symbol?.rawValue, presented: presented, action: action)
+    }
+    
     /// The content and behavior of the view.
     public var body: some ToolbarContent {
         ToolbarItem(placement: placement) {

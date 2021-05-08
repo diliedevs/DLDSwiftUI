@@ -18,7 +18,7 @@ public struct NavLabel<Destination: View>: View {
     ///   - titleKey: The key for the localized title describing the navigation links destination.
     ///   - symbol: The symbol for the navigation links icon.
     ///   - destination: The view for the navigation link to present.
-    public init(title titleKey: LocalizedStringKey, symbol: Symbol, destination: Destination) {
+    public init(_ titleKey: LocalizedStringKey, symbol: Symbol, destination: Destination) {
         self.destination = destination
         self.label       = Label(titleKey, symbol: symbol)
     }
@@ -28,7 +28,7 @@ public struct NavLabel<Destination: View>: View {
     ///   - titleKey: The key for the localized title describing the navigation links destination.
     ///   - imgName: The name of the image to use for the navigation links icon.
     ///   - destination: The view for the navigation link to present.
-    public init(title titleKey: LocalizedStringKey, image imgName: String, destination: Destination) {
+    public init(_ titleKey: LocalizedStringKey, image imgName: String, destination: Destination) {
         self.destination = destination
         self.label       = Label(titleKey, image: imgName)
     }
