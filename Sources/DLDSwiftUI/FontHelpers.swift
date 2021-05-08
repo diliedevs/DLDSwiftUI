@@ -15,7 +15,7 @@ public extension Font {
     ///   - design: The design to use for the font.
     ///   - weight: The weight of the font.
     ///   - italic: Whether or not to add italics to the font.
-    private static func system(_ style: TextStyle, design: Design, weight: Weight, italic: Bool = false) -> Font {
+    static func system(_ style: TextStyle, design: Design, weight: Weight, italic: Bool = false) -> Font {
         let sf = system(style, design: design).weight(weight)
         return italic ? sf.italic() : sf
     }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// All the names of system images as defined in the `SF Symbols` application.
 public enum Symbol: String, CaseIterable {
     
     // MARK: - A

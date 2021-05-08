@@ -10,16 +10,11 @@ import SwiftUI
 
 /// A button that can be placed in the toolbar or navigation bar.
 public struct ToolbarButton: ToolbarContent {
-    /// Which section of the toolbar the button should be placed in.
-    public let placement   : ToolbarItemPlacement
-    /// The localizable title of the button.
-    public let title       : LocalizedStringKey
-    /// The name of the `SF Symbols` system image for the button, if the button should show an icon.
-    public let systemImage : String?
-    /// Whether or not to show the button.
-    public let presented   : Bool
-    /// The action for the button.
-    public let action      : () -> Void
+    let placement   : ToolbarItemPlacement
+    let title       : LocalizedStringKey
+    let systemImage : String?
+    let presented   : Bool
+    let action      : () -> Void
     
     /// Creates a button that can be placed in the toolbar or navigation bar.
     /// - Parameters:
@@ -36,6 +31,7 @@ public struct ToolbarButton: ToolbarContent {
         self.action      = action
     }
     
+    /// The content and behavior of the view.
     public var body: some ToolbarContent {
         ToolbarItem(placement: placement) {
             if presented {
@@ -67,14 +63,10 @@ public struct ToolbarButton: ToolbarContent {
 @available(iOS, deprecated: 14.5, message: "Use NavigationBar styling instead")
 /// A title that can be placed prominently in the toolbar or navigation bar, with or without an image.
 public struct ToolbarTitle: ToolbarContent {
-    /// The localizable title.
-    public let title : LocalizedStringKey
-    /// The image to precede the title.
-    public let image : Image?
-    /// The font to use for the title.
-    public let font  : Font
-    /// The color to use for the title.
-    public let color : Color
+    let title : LocalizedStringKey
+    let image : Image?
+    let font  : Font
+    let color : Color
     
     /// Creates a title that can be placed prominently in the toolbar or navigation bar, with or without an image.
     /// - Parameters:
@@ -99,6 +91,7 @@ public struct ToolbarTitle: ToolbarContent {
         self.init(LocalizedStringKey(title), image: image, font: font, color: color)
     }
     
+    /// The content and behavior of the view.
     public var body: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Group {
@@ -118,7 +111,9 @@ public struct ToolbarTitle: ToolbarContent {
 
 #if os(iOS)
 public extension ToolbarItemPlacement {
+    /// Shorthand alias for `navigationBarLeading`.
     static let navLeading = Self.navigationBarLeading
+    /// Shorthand alias for `navigationBarTrailing`.
     static let navTrailing = Self.navigationBarTrailing
 }
 #endif

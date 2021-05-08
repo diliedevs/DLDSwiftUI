@@ -8,34 +8,35 @@
 
 import SwiftUI
 
+/// A simple navigation link with a title and icon as its label.
 public struct NavLabel<Destination: View>: View {
-    public let titleKey    : LocalizedStringKey
-    public let destination : Destination
+    let destination : Destination
+    let label       : Label<Text, Image>
     
-    private let imageName : String
-    private let symbol    : Symbol?
-    
-    public init(titleKey: LocalizedStringKey, symbol: Symbol, destination: Destination) {
-        self.titleKey    = titleKey
+    /// Creates a navigation link that presents the destination view.
+    /// - Parameters:
+    ///   - titleKey: The key for the localized title describing the navigation links destination.
+    ///   - symbol: The symbol for the navigation links icon.
+    ///   - destination: The view for the navigation link to present.
+    public init(title titleKey: LocalizedStringKey, symbol: Symbol, destination: Destination) {
         self.destination = destination
-        self.imageName   = symbol.rawValue
-        self.symbol      = symbol
+        self.label       = Label(titleKey, symbol: symbol)
     }
     
-    public init(titleKey: LocalizedStringKey, imageName: String, destination: Destination) {
-        self.titleKey    = titleKey
+    /// Creates a navigation link that presents the destination view.
+    /// - Parameters:
+    ///   - titleKey: The key for the localized title describing the navigation links destination.
+    ///   - imgName: The name of the image to use for the navigation links icon.
+    ///   - destination: The view for the navigation link to present.
+    public init(title titleKey: LocalizedStringKey, image imgName: String, destination: Destination) {
         self.destination = destination
-        self.imageName   = imageName
-        self.symbol      = nil
+        self.label       = Label(titleKey, image: imgName)
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
         NavigationLink(destination: destination) {
-            if let symbol = symbol {
-                Label(titleKey, symbol: symbol)
-            } else {
-                Label(titleKey, image: imageName)
-            }
+            label
         }
     }
 }

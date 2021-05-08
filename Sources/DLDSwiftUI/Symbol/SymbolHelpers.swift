@@ -33,12 +33,6 @@ public extension Section where Parent == Label<Text, Image>, Content: View, Foot
     }
 }
 
-public extension LabeledButton {
-    init(_ titleKey: LocalizedStringKey, symbol: Symbol, action: @escaping () -> Void) {
-        self.init(titleKey, systemImage: symbol.rawValue, action: action)
-    }
-}
-
 public extension ToolbarButton {
     init(placement: ToolbarItemPlacement = .automatic, title: LocalizedStringKey, symbol: Symbol? = nil, presented: Bool = true, action: @escaping () -> Void) {
         self.init(placement: placement, title: title, systemImage: symbol?.rawValue, presented: presented, action: action)

@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-#if os(iOS)
-public typealias NavBarDisplayMode = NavigationBarItem.TitleDisplayMode
-#endif
-
 public extension BinaryFloatingPoint {
     var cgfloat: CGFloat { CGFloat(self) }
 }
@@ -48,25 +44,6 @@ public extension View {
             self
         }
     }
-    
-    #if os(iOS)
-    func navBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavBarDisplayMode = .automatic) -> some View {
-        self
-            .navigationTitle(titleKey)
-            .navigationBarTitleDisplayMode(displayMode)
-    }
-    #endif
-    
-    // MARK: - List
-    #if os(iOS)
-    func asInsetGroup() -> some View {
-        self.listStyle(InsetGroupedListStyle())
-    }
-    
-    func inInsetListGroup() -> some View {
-        List { self }.asInsetGroup()
-    }
-    #endif
     
     // MARK: - Frame
     /// Returns a view with the specified width and alignment.
@@ -134,3 +111,24 @@ public extension View {
         self.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
     }
 }
+
+#if os(iOS)
+public typealias NavBarDisplayMode = NavigationBarItem.TitleDisplayMode
+
+public extension View {
+    func navBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavBarDisplayMode = .automatic) -> some View {
+        self
+            .navigationTitle(titleKey)
+            .navigationBarTitleDisplayMode(displayMode)
+    }
+    
+    // MARK: - List
+    func asInsetGroup() -> some View {
+        self.listStyle(InsetGroupedListStyle())
+    }
+    
+    func inInsetListGroup() -> some View {
+        List { self }.asInsetGroup()
+    }
+}
+#endif

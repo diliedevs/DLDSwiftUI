@@ -10,8 +10,8 @@ import SwiftUI
 
 public struct TextTraits {
     #if os(iOS)
-    public let font : UIFont
-    public let color: UIColor
+    let font : UIFont
+    let color: UIColor
     
     public init(font: UIFont, color: UIColor?) {
         self.font  = font
@@ -20,8 +20,8 @@ public struct TextTraits {
     #endif
     
     #if os(OSX)
-    public let font : NSFont
-    public let color: NSColor
+    let font : NSFont
+    let color: NSColor
     
     public init(font: NSFont, color: NSColor?) {
         self.font  = font

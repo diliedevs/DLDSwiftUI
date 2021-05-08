@@ -8,19 +8,18 @@
 
 import SwiftUI
 
+/// A visual (colored) divider that can be used to separate other content.
 public struct Separator: View {
-    public var color: Color? = .none
+    var color: Color
     
-    public init(in color: Color? = .none) {
+    /// Creates a visual (colored) divider that can be used to separate other content.
+    /// - Parameter color: The optional color for the divider.
+    public init(in color: Color = .clear) {
         self.color = color
     }
     
+    /// The content and behavior of the view.
     public var body: some View {
-        Divider()
-            .background(
-                Group {
-                    if let clr = color { clr }
-                }
-            )
+        Divider().background(color)
     }
 }

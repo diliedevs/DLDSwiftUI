@@ -59,29 +59,3 @@ public extension View {
     }
 }
 
-/// A `Button` view with a `Label` showing both a localizable title and a `SF Symbols` icon.
-public struct LabeledButton: View {
-    /// The localizable title for the button.
-    public let title : LocalizedStringKey
-    /// The name of the `SF Symbols` system image for the button.
-    public let systemImage : String
-    /// The action for the button.
-    public let action : () -> Void
-    
-    /// Creates a button with a label showing both a localizable title and a `SF Symbols` icon.
-    /// - Parameters:
-    ///   - title: The title for the button as a `LocalizedStringKey`.
-    ///   - systemImage: The name of the `SF Symbols` icon.
-    ///   - action: The action for the button.
-    public init(_ title: LocalizedStringKey, systemImage: String, action: @escaping () -> Void) {
-        self.title        = title
-        self.systemImage  = systemImage
-        self.action       = action
-    }
-    
-    public var body: some View {
-        Button(action: action) {
-            Label(title, systemImage: systemImage)
-        }
-    }
-}
