@@ -41,8 +41,8 @@ public extension ToolbarButton where Content == Text {
         self.init(presented: presented, at: placement, action: action, content: { Text(titleKey) })
     }
     
-    public static func cancel(presented: Bool = true, action: @escaping () -> Void) -> ToolbarButton {
-        ToolbarButton("cancel", presented: presented, at: .cancellationAction, action: action)
+    public static func cancel(_ titleKey: LocalizedStringKey = "cancel", presented: Bool = true, action: @escaping () -> Void) -> ToolbarButton {
+        ToolbarButton(titleKey, presented: presented, at: .cancellationAction, action: action)
     }
     
     public static func confirm(_ titleKey: LocalizedStringKey, presented: Bool = true, action: @escaping () -> Void) -> ToolbarButton {
