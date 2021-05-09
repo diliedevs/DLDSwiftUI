@@ -45,13 +45,13 @@ public struct NumericTextField<Value: Numeric>: View {
     ///   - onEditingChanged: The action to perform when the user begins editing the value and after the user finishes editing.
     ///   - onCommit: An action to perform when the user performs an action while the text field has focus.
     public init(_ titleKey: LocalizedStringKey, value: Binding<Value>, formatter: NumberFormatter, keyboardType: UIKeyboardType = .decimalPad, onEditingChanged: @escaping (Bool) -> Void = { _ in }, onCommit: @escaping () -> Void = {}) {
-        self.init(titleKey: titleKey, value: value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
+        self.init(titleKey, value: value, formatter: formatter, onEditingChanged: onEditingChanged, onCommit: onCommit)
         self.keyboardType = keyboardType
     }
     #endif
     
     /// The content and behavior of the view.
-    public var body: some
+    public var body: some View {
         Group {
             #if os(iOS)
             

@@ -14,35 +14,40 @@ public extension Font {
     ///   - style: The dynamic text style for the font.
     ///   - design: The design to use for the font.
     ///   - weight: The weight of the font.
-    ///   - italic: Whether or not to add italics to the font.
+    ///   - italic: Whether or not to add italics to the font. The default is `false`.
     static func system(_ style: TextStyle, design: Design, weight: Weight, italic: Bool = false) -> Font {
         let sf = system(style, design: design).weight(weight)
         return italic ? sf.italic() : sf
     }
     
     // MARK: - Rounded
-    /// Gets a system font with the given text style and the given weight in the rounded design.
+    /// Gets a system font with the given text style, weight, and italics in the rounded design.
     /// - Parameters:
     ///   - style: The dynamic text style to use. Default is `body`.
     ///   - weight: The weight of the font. Default is `regular`.
-    static func rounded(_ style: TextStyle = .body, weight: Weight = .regular) -> Font {
-        system(style, design: .rounded, weight: weight)
-    }
-    
-    // MARK: - Rounded Bold
-    /// Gets a system font with the given text style in the bold weight with a rounded design.
-    ///   - style: The dynamic text style to use. Default is `body`.
-    static func roundedBold(_ style: TextStyle = .body) -> Font {
-        system(style, design: .rounded, weight: .bold)
+    ///   - italic: Whether or not to add italics to the font. The default is `false`.
+    static func rounded(_ style: TextStyle = .body, weight: Weight = .regular, italic: Bool = false) -> Font {
+        system(style, design: .rounded, weight: weight, italic: italic)
     }
     
     // MARK: - Italic
-    /// Gets a system font with the given text style and the given weight in italics.
+    /// Gets a system font with the given text style, design, and weight in italics.
     /// - Parameters:
     ///   - style: The dynamic text style to use. Default is `body`.
+    ///   - design: The design of the font. Default is `default`.
     ///   - weight: The weight of the font. Default is `regular`.
-    static func italic(_ style: TextStyle = .body, weight: Weight = .regular) -> Font {
-        system(style, design: .default, weight: weight, italic: true)
+    static func italic(_ style: TextStyle = .body, design: Design = .default, weight: Weight = .regular) -> Font {
+        system(style, design: design, weight: weight, italic: true)
+    }
+    
+    // MARK: - Bold
+    /// Gets a system font with the given text style, design, and italics in the bold font weight.
+    /// - Parameters:
+    ///   - style: The dynamic text style to use. Default is `body`.
+    ///   - design: The design of the font. Default is `default`.
+    ///   - italic: Whether or not to add italics to the font. The default is `false`.
+    static func bold(_ style: TextStyle = .body, design: Design = .default, italic: Bool = false) -> Font {
+        system(style, design: design, weight: .bold, italic: italic)
     }
     
     // MARK: - Large Title

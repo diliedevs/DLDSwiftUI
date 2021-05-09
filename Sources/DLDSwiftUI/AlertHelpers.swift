@@ -20,10 +20,10 @@ public extension Alert {
         
         /// Creates a `TitleMessage` with the given localizable title and message.
         /// - Parameters:
-        ///   - title: The title as a `LocalizedStringKey`.
+        ///   - titleKey: The key for the localized title.
         ///   - message: The message as a `LocalizedStringKey`.
-        public init(_ title: LocalizedStringKey, message: LocalizedStringKey) {
-            self.title   = title
+        public init(_ titleKey: LocalizedStringKey, message: LocalizedStringKey) {
+            self.title   = titleKey
             self.message = message
         }
     }
@@ -53,23 +53,49 @@ public extension Alert {
 public extension Alert.Button {
     /// Creates an alert button with the default style and a localizable title in a `Text` view.
     /// - Parameters:
-    ///   - title: The title for the button as a `LocalizedStringKey`.
+    ///   - title: The title for the button.
     ///   - action: The action for the button.
-    static func basic(_ title: LocalizedStringKey, action: (() -> Void)? = {}) -> Alert.Button {
+    static func basic<S: StringProtocol>(_ title: S, action: (() -> Void)? = {}) -> Alert.Button {
         Self.default(Text(title), action: action)
     }
     
-    /// Creates an alert button with the default style and a localizable title of *'ok'*.
-    /// - Parameter action: The action for the button.
-    static func ok(action: (() -> Void)? = {}) -> Alert.Button {
-        basic("ok", action: action)
+    /// Creates an alert button with the default style and a localizable title.
+    /// - Parameters:
+    ///   - title: The title for the button. The default is `OK`.
+    ///   - action: The action for the button.
+    static func ok<S: StringProtocol>(_ title: S = "OK", action: (() -> Void)? = {}) -> Alert.Button {
+        basic(title, action: action)
     }
     
     /// Creates an alert button in a style that indicates the destruction of some data and a localizable title in a `Text` view.
     /// - Parameters:
-    ///   - title: The title for the button as a `LocalizedStringKey`.
+    ///   - titleKey: The key for the localized title for the button.
     ///   - action: The action for the button.
-    static func destructive(_ title: LocalizedStringKey, action: (() -> Void)? = {}) -> Alert.Button {
+    static func destructive<S: StringProtocol>(_ title: S, action: (() -> Void)? = {}) -> Alert.Button {
         destructive(Text(title), action: action)
+    }
+    
+    /// Creates an alert button with the default style and a localizable title in a `Text` view.
+    /// - Parameters:
+    ///   - titleKey: The key for the localized title for the button.
+    ///   - action: The action for the button.
+    static func basic(_ titleKey: LocalizedStringKey, action: (() -> Void)? = {}) -> Alert.Button {
+        Self.default(Text(titleKey), action: action)
+    }
+   
+    /// Creates an alert button with the default style and a localizable title.
+    /// - Parameters:
+    ///   - titleKey: The key for the localized title for the button. The default is `ok`.
+    ///   - action: The action for the button.
+    static func ok(_ titleKey: LocalizedStringKey = "ok", action: (() -> Void)? = {}) -> Alert.Button {
+        basic(titleKey, action: action)
+    }
+    
+    /// Creates an alert button in a style that indicates the destruction of some data and a localizable title in a `Text` view.
+    /// - Parameters:
+    ///   - titleKey: The key for the localized title for the button.
+    ///   - action: The action for the button.
+    static func destructive(_ titleKey: LocalizedStringKey, action: (() -> Void)? = {}) -> Alert.Button {
+        destructive(Text(titleKey), action: action)
     }
 }
