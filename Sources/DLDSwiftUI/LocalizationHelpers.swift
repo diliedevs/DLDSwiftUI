@@ -10,12 +10,25 @@ import SwiftUI
 
 public extension LocalizedStringKey {
     var stringKey: String {
-        let description  = "\(self)"
-        let components   = description.components(separatedBy: ", ")
-        let keyComponent = components[0].components(separatedBy: ": ")
-        
-        return keyComponent[1].replacingOccurrences(of: "\"", with: "")
+        let props = Mirror(reflecting: self).properties
+        return props.first(where: { $0.label == "key" })?.value as? String ?? ""
     }
     
     var stringValue: String { NSLocalizedString(stringKey, comment: "") }
+}
+
+public extension Mirror {
+    struct Property {
+        let label: String
+        let value: Any
+        
+        init?(label: String?, value: Any) {
+            guard let label = label else { return nil }
+            
+            self.label = label
+            self.value = value
+        }
+    }
+    
+    var properties: [Property] { children.compactMap(Property.init) }
 }

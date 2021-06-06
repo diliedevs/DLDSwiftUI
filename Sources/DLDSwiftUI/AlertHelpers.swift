@@ -9,43 +9,27 @@
 import SwiftUI
 
 public extension Alert {
-    /// A struct that holds the localizable title and message for an `Alert` and is identifiable.
-    struct TitleMessage: Identifiable {
-        /// The unique identifier for the `TitleMessage`.
-        public let id = UUID()
-        /// The title as a `LocalizedStringKey`
-        public let title : LocalizedStringKey
-        /// The message as a `LocalizedStringKey`
-        public let message : LocalizedStringKey
-        
-        /// Creates a `TitleMessage` with the given localizable title and message.
-        /// - Parameters:
-        ///   - titleKey: The key for the localized title.
-        ///   - message: The message as a `LocalizedStringKey`.
-        public init(_ titleKey: LocalizedStringKey, message: LocalizedStringKey) {
-            self.title   = titleKey
-            self.message = message
-        }
-    }
+    /// A type alias for a tuple containing a localizable title and message key.
+    typealias Tims = (title: LocalizedStringKey, message: LocalizedStringKey)
     
     /// Creates an alert with the given `TitleMessage` and two buttons.
     /// - Parameters:
     ///   - titleMsg: The `TitleMessage` holding the localizable title and message for the alert.
     ///   - primaryButton: The primary alert button.
     ///   - secondaryButton: The secondary alert button.
-    init(titleMsg: TitleMessage, primaryButton: Alert.Button, secondaryButton: Alert.Button) {
+    init(titleMsg: Tims, primaryButton: Alert.Button, secondaryButton: Alert.Button) {
         self.init(title: Text(titleMsg.title),
                   message: Text(titleMsg.message),
                   primaryButton: primaryButton,
                   secondaryButton: secondaryButton
         )
     }
-    
+        
     /// Creates an alert with the given `TitleMessage` and a single dismiss button.
     /// - Parameters:
     ///   - titleMsg: The `TitleMessage` holding the localizable title and message for the alert.
     ///   - dismissButton: The alert button to dismiss the alert.
-    init(titleMsg: TitleMessage, dismissButton: Alert.Button? = nil) {
+    init(titleMsg: Tims, dismissButton: Alert.Button? = nil) {
         self.init(title: Text(titleMsg.title), message: Text(titleMsg.message), dismissButton: dismissButton)
     }
 }
