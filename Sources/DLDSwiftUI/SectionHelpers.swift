@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+@available(macOS, deprecated: 12, message: "SwiftUI now has these same initializers.")
+@available(iOS, deprecated: 15, message: "SwiftUI now has these same initializers.")
 public extension Section where Parent == Text, Content: View, Footer == EmptyView {
     init<S: StringProtocol>(_ title: S, @ViewBuilder content: () -> Content) {
         self.init(header: Text(title), content: content)
