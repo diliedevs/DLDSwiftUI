@@ -30,6 +30,8 @@ public struct ReverseLabelStyle: LabelStyle {
     }
 }
 
+@available(OSX, deprecated: 11.3, message: "Use .labelStyle(.style) notation instead")
+@available(iOS, deprecated: 14.5, message: "Use .labelStyle(.style) notation instead")
 public extension View {
     /// Sets the default label style for labels within this view.
     func defaultLabel() -> some View {
