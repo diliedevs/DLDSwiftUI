@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-@available(OSX, deprecated: 11.3, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
+@available(macOS, deprecated: 11.3, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
 @available(iOS, deprecated: 14.5, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
 /// A label style that forces the display of both the icon and title of the label.
 public struct FullLabelStyle: LabelStyle {
@@ -30,7 +30,29 @@ public struct ReverseLabelStyle: LabelStyle {
     }
 }
 
-@available(OSX, deprecated: 11.3, message: "Use .labelStyle(.style) notation instead")
+public extension LabelStyle where Self == ReverseLabelStyle {
+    static var reverse: Self {
+        .init()
+    }
+}
+
+/// A label style that displays the icon above the title of the label.
+public struct VerticalLabelStyle: LabelStyle {
+    public func makeBody(configuration: Configuration) -> some View {
+        VStack {
+            configuration.icon
+            configuration.title
+        }
+    }
+}
+
+public extension LabelStyle where Self == VerticalLabelStyle {
+    static var vertical: Self {
+        .init()
+    }
+}
+
+@available(macOS, deprecated: 11.3, message: "Use .labelStyle(.style) notation instead")
 @available(iOS, deprecated: 14.5, message: "Use .labelStyle(.style) notation instead")
 public extension View {
     /// Sets the default label style for labels within this view.

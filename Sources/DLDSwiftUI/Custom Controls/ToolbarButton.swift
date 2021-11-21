@@ -41,12 +41,16 @@ public extension ToolbarButton where Content == Text {
         self.init(presented: presented, at: placement, action: action, content: { Text(titleKey) })
     }
     
-    static func cancel(_ titleKey: LocalizedStringKey = "cancel", presented: Bool = true, action: @escaping () -> Void) -> ToolbarButton {
+    static func cancel(_ titleKey: LocalizedStringKey = "Cancel", presented: Bool = true, action: @escaping () -> Void) -> ToolbarButton {
         ToolbarButton(titleKey, presented: presented, at: .cancellationAction, action: action)
     }
     
     static func confirm(_ titleKey: LocalizedStringKey, presented: Bool = true, action: @escaping () -> Void) -> ToolbarButton {
         ToolbarButton(titleKey, presented: presented, at: .confirmationAction, action: action)
+    }
+    
+    static func add(_ titleKey: LocalizedStringKey = "Add", presented: Bool = true, at placement: ToolbarItemPlacement = .automatic, action: @escaping () -> Void) -> ToolbarButton {
+        ToolbarButton(titleKey, presented: presented, at: placement, action: action)
     }
 }
 
@@ -73,5 +77,9 @@ public extension ToolbarButton where Content == Label<Text, Image> {
     
     init(_ titleKey: LocalizedStringKey, symbol: Symbol, presented: Bool = true, at placement: ToolbarItemPlacement = .automatic, action: @escaping () -> Void) {
         self.init(presented: presented, at: placement, action: action, content: { Label(titleKey, systemImage: symbol.rawValue) })
+    }
+    
+    static func add(_ titleKey: LocalizedStringKey = "Add", symbol: Symbol = .plusCircle, presented: Bool = true, at placement: ToolbarItemPlacement = .automatic, action: @escaping () -> Void) -> ToolbarButton {
+        ToolbarButton(titleKey, symbol: symbol, presented: presented, at: placement, action: action)
     }
 }

@@ -14,8 +14,9 @@ public extension Color {
     static let halfGray    = Color.gray.opacity(0.5)
     static let halfWhite   = Color.white.opacity(0.5)
     
-    var half    : Color { self.opacity(0.5) }
-    var quarter : Color { self.opacity(0.25) }
+    var half         : Color { self.opacity(0.5) }
+    var quarter      : Color { self.opacity(0.25) }
+    var threeQuarter : Color { self.opacity(0.75) }
     
     #if os(iOS)
     static let systemBackground                 = Color(UIColor.systemBackground)
@@ -32,7 +33,7 @@ public extension Color {
     }
     #endif
     
-    #if os(OSX)
+    #if os(macOS)
     var nsColor: NSColor { NSColor(self) }
     
     func nsColor(with opacity: CGFloat = 1) -> NSColor {

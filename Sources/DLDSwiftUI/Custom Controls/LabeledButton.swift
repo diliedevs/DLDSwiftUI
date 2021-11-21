@@ -73,10 +73,63 @@ public struct LabeledButton: View {
         self.action = action
     }
     
+    /// Creates a button with the `Filter` title and `􀌈` symbol.
+    /// - Parameter action: The action for the button.
+    static func filter(action: @escaping () -> Void) -> Self {
+        LabeledButton("Filter", symbol: .line3HorizontalDecreaseCircle, action: action)
+    }
+    /// Creates a button with the `Sort` title and `􀁾` symbol.
+    /// - Parameter action: The action for the button.
+    static func sort(action: @escaping () -> Void) -> Self {
+        LabeledButton("Sort", symbol: .arrowUpArrowDownCircle, action: action)
+    }
+    /// Creates a button with the `Edit` title and `􀈎` symbol.
+    /// - Parameter action: The action for the button.
+    static func edit(action: @escaping () -> Void) -> Self {
+        LabeledButton("Edit", symbol: .squareAndPencil, action: action)
+    }
+    /// Creates a button with the `Add` title and `􀁌` symbol.
+    /// - Parameter action: The action for the button.
+    static func add(action: @escaping () -> Void) -> Self {
+        LabeledButton("Add", symbol: .plusCircle, action: action)
+    }
+    
     /// The content and behavior of the view.
     public var body: some View {
         Button(action: action) {
             label
         }
+    }
+}
+
+@available(macOS 12.0, iOS 15.0.0, *)
+public struct EasyButtonStyle<BS: PrimitiveButtonStyle, LS: LabelStyle>: ViewModifier {
+    public var buttonStyle : BS
+    public var labelStyle  : LS
+    public var imageScale  : Image.Scale = .medium
+    public var tint        : Color?      = nil
+    
+    public func body(content: Content) -> some View {
+        content
+            .imageScale(imageScale)
+            .labelStyle(labelStyle)
+            .buttonStyle(buttonStyle)
+            .tint(tint)
+    }
+}
+
+@available(macOS 12.0, iOS 15.0.0, *)
+public extension View {
+    func easyButtonStyle<BS: PrimitiveButtonStyle, LS: LabelStyle>(buttonStyle: BS, labelStyle: LS, imageScale: Image.Scale = .medium, tint: Color? = nil) -> some View {
+        self.modifier(EasyButtonStyle(buttonStyle: buttonStyle, labelStyle: labelStyle, imageScale: imageScale, tint: tint))
+    }
+    func easyButtonStyle<BS: PrimitiveButtonStyle>(buttonStyle: BS, imageScale: Image.Scale = .medium, tint: Color? = nil) -> some View {
+        self.modifier(EasyButtonStyle(buttonStyle: buttonStyle, labelStyle: .automatic, imageScale: imageScale, tint: tint))
+    }
+    func easyButtonStyle<LS: LabelStyle>(labelStyle: LS, imageScale: Image.Scale = .medium, tint: Color? = nil) -> some View {
+        self.modifier(EasyButtonStyle(buttonStyle: .automatic, labelStyle: labelStyle, imageScale: imageScale, tint: tint))
+    }
+    func easyButtonStyle(imageScale: Image.Scale = .medium, tint: Color? = nil) -> some View {
+        self.modifier(EasyButtonStyle(buttonStyle: .automatic, labelStyle: .automatic, imageScale: imageScale, tint: tint))
     }
 }

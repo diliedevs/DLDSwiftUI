@@ -17,9 +17,8 @@ public extension View {
     /// Returns a view with it background set to the specifiied color of the given opacity.
     /// - Parameters:
     ///   - color: The color to fill the background with.
-    ///   - opacity: A value between `0` (fully transparent) and `1` (fully opaque).
-    func backgroundColor(_ color: Color, opacity: Double = 1) -> some View {
-        self.background(color.opacity(opacity))
+    func backgroundColor(_ color: Color) -> some View {
+        self.background(color)
     }
     
     /// Sets the default font for text in the view and the color that the view uses for foreground elements.
@@ -30,15 +29,17 @@ public extension View {
         self.font(font).foregroundColor(color)
     }
     
-    // MARK: - Navigation
-    func navigate<Destination: View>(to destination: Destination) -> some View {
-        NavigationLink(destination: destination) { self }
-    }
-    
     func inNavView() -> some View {
         NavigationView {
             self
         }
+    }
+    
+    func inList<LS: ListStyle>(style: LS) -> some View {
+        List {
+            self
+        }
+        .listStyle(style)
     }
     
     // MARK: - Padding
@@ -123,15 +124,6 @@ public extension View {
         self
             .navigationTitle(titleKey)
             .navigationBarTitleDisplayMode(displayMode)
-    }
-    
-    // MARK: - List
-    func asInsetGroup() -> some View {
-        self.listStyle(InsetGroupedListStyle())
-    }
-    
-    func inInsetListGroup() -> some View {
-        List { self }.asInsetGroup()
     }
 }
 #endif

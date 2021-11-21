@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// All the names of system images as defined in the `SF Symbols` application.
+/// All the names of system images as defined in the `SF Symbols` application version `3.1 (63)`.
 public enum Symbol: String, CaseIterable {
     
     // MARK: - A
@@ -548,6 +548,7 @@ public enum Symbol: String, CaseIterable {
     case boltHorizontalFill = "bolt.horizontal.fill"
     case boltHorizontalIcloud = "bolt.horizontal.icloud"
     case boltHorizontalIcloudFill = "bolt.horizontal.icloud.fill"
+    case boltRingClosed = "bolt.ring.closed"
     case boltShield = "bolt.shield"
     case boltShieldFill = "bolt.shield.fill"
     case boltSlash = "bolt.slash"
@@ -2421,8 +2422,12 @@ public enum Symbol: String, CaseIterable {
     case platter2FilledIphone = "platter.2.filled.iphone"
     case platter2FilledIphoneLandscape = "platter.2.filled.iphone.landscape"
     case platterBottomApplewatchCase = "platter.bottom.applewatch.case"
+    case platterFilledBottomAndArrowDownIphone = "platter.filled.bottom.and.arrow.down.iphone"
     case platterFilledBottomApplewatchCase = "platter.filled.bottom.applewatch.case"
+    case platterFilledBottomIphone = "platter.filled.bottom.iphone"
+    case platterFilledTopAndArrowUpIphone = "platter.filled.top.and.arrow.up.iphone"
     case platterFilledTopApplewatchCase = "platter.filled.top.applewatch.case"
+    case platterFilledTopIphone = "platter.filled.top.iphone"
     case platterTopApplewatchCase = "platter.top.applewatch.case"
     case play
     case playCircle = "play.circle"
@@ -2880,6 +2885,10 @@ public enum Symbol: String, CaseIterable {
     case square2Stack3D = "square.2.stack.3d"
     case square2Stack3DBottomFilled = "square.2.stack.3d.bottom.filled"
     case square2Stack3DTopFilled = "square.2.stack.3d.top.filled"
+    case square3Layers3DDownBackward = "square.3.layers.3d.down.backward"
+    case square3Layers3DDownForward = "square.3.layers.3d.down.forward"
+    case square3Layers3DDownLeft = "square.3.layers.3d.down.left"
+    case square3Layers3DDownRight = "square.3.layers.3d.down.right"
     case square3Stack3D = "square.3.stack.3d"
     case square3Stack3DBottomFilled = "square.3.stack.3d.bottom.filled"
     case square3Stack3DMiddleFilled = "square.3.stack.3d.middle.filled"
@@ -3093,8 +3102,10 @@ public enum Symbol: String, CaseIterable {
     case textBubbleFill = "text.bubble.fill"
     case textInsert = "text.insert"
     case textJustify = "text.justify"
-    case textJustifyleft = "text.justifyleft"
-    case textJustifyright = "text.justifyright"
+    case textJustifyLeading = "text.justify.leading"
+    case textJustifyLeft = "text.justify.left"
+    case textJustifyRight = "text.justify.right"
+    case textJustifyTrailing = "text.justify.trailing"
     case textMagnifyingglass = "text.magnifyingglass"
     case textQuote = "text.quote"
     case textRedaction = "text.redaction"
@@ -3347,3 +3358,4 @@ public enum Symbol: String, CaseIterable {
     case zzz
     
 }
+

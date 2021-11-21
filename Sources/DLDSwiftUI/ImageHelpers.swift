@@ -112,3 +112,28 @@ public extension Image {
         self.resizedToFill(width: size, height: size, alignment: alignment, capInsets: capInsets, resizingMode: resizingMode)
     }
 }
+
+#if os(iOS)
+public extension UIImage {
+    /// Creates an image object from the specified named asset.
+    /// - Parameter bundleName: The name of the image asset or file in the bundle. For images in asset catalogs, specify the name of the image asset. For PNG images, you may omit the filename extension. For all other file formats, always include the filename extension.
+    convenience init(bundleName: String) {
+        self.init(named: bundleName)!
+    }
+    
+    /// Returns the `UIImage` of the application icon.
+    static var appIcon: UIImage { UIImage(bundleName: "AppIcon") }
+}
+#endif
+
+#if os(macOS)
+public extension NSImage {
+    /// Creates an image object associated with the specified name.
+    /// - Parameter bundleName: The name associated with the desired image in your app bundle.
+    convenience init(bundleName: String) {
+        self.init(named: bundleName)!
+    }
+    
+    static var appIcon: NSImage { NSImage(bundleName: "AppIcon") }
+}
+#endif
