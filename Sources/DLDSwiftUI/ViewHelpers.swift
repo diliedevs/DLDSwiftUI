@@ -29,6 +29,18 @@ public extension View {
         self.font(font).foregroundColor(color)
     }
     
+    /// Hides this view when the provided condition is met.
+    /// - Parameter condition: A Boolean value that determines whether this view is hidden or displayed.
+    func hidden(if condition: Bool) -> some View {
+        Group {
+            if condition {
+                self.hidden()
+            } else {
+                self
+            }
+        }
+    }
+    
     func inNavView() -> some View {
         NavigationView {
             self
