@@ -75,22 +75,22 @@ public struct LabeledButton: View {
     
     /// Creates a button with the `Filter` title and `􀌈` symbol.
     /// - Parameter action: The action for the button.
-    static func filter(action: @escaping () -> Void) -> Self {
+    public static func filter(action: @escaping () -> Void) -> Self {
         LabeledButton("Filter", symbol: .line3HorizontalDecreaseCircle, action: action)
     }
     /// Creates a button with the `Sort` title and `􀁾` symbol.
     /// - Parameter action: The action for the button.
-    static func sort(action: @escaping () -> Void) -> Self {
+    public static func sort(action: @escaping () -> Void) -> Self {
         LabeledButton("Sort", symbol: .arrowUpArrowDownCircle, action: action)
     }
     /// Creates a button with the `Edit` title and `􀈎` symbol.
     /// - Parameter action: The action for the button.
-    static func edit(action: @escaping () -> Void) -> Self {
+    public static func edit(action: @escaping () -> Void) -> Self {
         LabeledButton("Edit", symbol: .squareAndPencil, action: action)
     }
     /// Creates a button with the `Add` title and `􀁌` symbol.
     /// - Parameter action: The action for the button.
-    static func add(action: @escaping () -> Void) -> Self {
+    public static func add(action: @escaping () -> Void) -> Self {
         LabeledButton("Add", symbol: .plusCircle, action: action)
     }
     

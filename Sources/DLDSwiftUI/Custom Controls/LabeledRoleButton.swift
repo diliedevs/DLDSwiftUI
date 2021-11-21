@@ -89,7 +89,7 @@ public struct LabeledRoleButton: View {
     
     /// Creates a button with a destructive role, a title of `Delete` and the `􀈑` symbol.
     /// - Parameter action: The action for the button.
-    static func delete(action: @escaping () -> Void) -> Self {
+    public static func delete(action: @escaping () -> Void) -> Self {
         LabeledRoleButton("Delete", symbol: .trash, role: .destructive, action: action)
     }
     
