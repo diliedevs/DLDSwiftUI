@@ -12,7 +12,7 @@ public struct RowView<Prefix: View, Content: View>: View {
     let prefix: Prefix
     @ViewBuilder var content: () -> Content
     
-    public init(prefix: Prefix, content: @escaping () -> Content) {
+    public init(prefix: Prefix, @ViewBuilder content: @escaping () -> Content) {
         self.prefix  = prefix
         self.content = content
     }
