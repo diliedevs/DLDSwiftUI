@@ -9,3 +9,5 @@
 struct DLDSwiftUI {
     var text = "Hello, World!"
 }
+
+public typealias BasicAction = () -> Void
