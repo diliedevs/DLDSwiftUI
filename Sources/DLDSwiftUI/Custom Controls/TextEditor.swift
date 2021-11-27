@@ -19,8 +19,10 @@ public extension TextEditor {
             
             self
         }
-        .onAppear { UITextView.appearance().backgroundColor = .clear }
-        .onDisappear { UITextView.appearance().backgroundColor = nil }
+        #if os(iOS)
+            .onAppear { UITextView.appearance().backgroundColor = .clear }
+            .onDisappear { UITextView.appearance().backgroundColor = nil }
+        #endif
     }
 }
 
@@ -37,6 +39,9 @@ public extension View {
                     .labelStyle(.iconOnly)
             }
             .hidden(if: text.wrappedValue.isEmpty)
+            #if os(macOS)
+                .buttonStyle(.borderless)
+            #endif
         }
     }
 }
