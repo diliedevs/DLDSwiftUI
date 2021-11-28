@@ -18,6 +18,14 @@ public extension Color {
     var quarter      : Color { self.opacity(0.25) }
     var threeQuarter : Color { self.opacity(0.75) }
     
+    static var standardColors: [Color] {
+        if #available(macOS 12.0, iOS 15.0, *) {
+            return [.white, .black, .red, .orange, .yellow, .green, .mint, .teal, .cyan, .blue, .indigo, .purple, .pink, .gray, .brown, .primary, .secondary, .accentColor]
+        } else {
+            return [.white, .black, .red, .orange, .yellow, .green, .blue, .purple, .pink, .gray, .primary, .secondary, .accentColor]
+        }
+    }
+    
     #if os(iOS)
     static let systemBackground                 = Color(UIColor.systemBackground)
     static let secondarySystemBackground        = Color(UIColor.secondarySystemBackground)

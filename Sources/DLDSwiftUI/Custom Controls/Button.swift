@@ -10,11 +10,11 @@ import SwiftUI
 
 @available(macOS 12.0, iOS 15.0.0, *)
 public extension Button where Label == Text {
-    static func cancel(action: @escaping () -> Void) -> Self {
+    static func cancel(action: @escaping BasicAction) -> Self {
         Button("Cancel", role: .cancel, action: action)
     }
     
-    static func delete(action: @escaping () -> Void) -> Self {
+    static func delete(action: @escaping BasicAction) -> Self {
         Button("Delete", role: .destructive, action: action)
     }
 }

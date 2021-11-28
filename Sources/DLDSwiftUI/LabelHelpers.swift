@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-@available(macOS, deprecated: 11.3, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
-@available(iOS, deprecated: 14.5, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
+@available(macOS, obsoleted: 11.3, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
+@available(iOS, obsoleted: 14.5, message: "Use the SwiftUI native TitleAndIconLabelStyle instead")
 /// A label style that forces the display of both the icon and title of the label.
 public struct FullLabelStyle: LabelStyle {
     public func makeBody(configuration: Configuration) -> some View {
@@ -52,8 +52,8 @@ public extension LabelStyle where Self == VerticalLabelStyle {
     }
 }
 
-@available(macOS, deprecated: 11.3, message: "Use .labelStyle(.style) notation instead")
-@available(iOS, deprecated: 14.5, message: "Use .labelStyle(.style) notation instead")
+@available(macOS, obsoleted: 11.3, message: "Use .labelStyle(.style) notation instead")
+@available(iOS, obsoleted: 14.5, message: "Use .labelStyle(.style) notation instead")
 public extension View {
     /// Sets the default label style for labels within this view.
     func defaultLabel() -> some View {

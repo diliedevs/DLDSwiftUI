@@ -13,7 +13,7 @@ import SwiftUI
 public struct LabeledRoleButton: View {
     let label: Label<Text, Image>
     let role: ButtonRole?
-    let action : () -> Void
+    let action : BasicAction
     
     /// Creates a button with a label showing both a localizable title and a resource image icon.
     /// - Parameters:
@@ -21,7 +21,7 @@ public struct LabeledRoleButton: View {
     ///   - name: The name of an image resource to lookup.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    public init<S: StringProtocol>(_ title: S, image name: String, role: ButtonRole?, action: @escaping () -> Void) {
+    public init<S: StringProtocol>(_ title: S, image name: String, role: ButtonRole?, action: @escaping BasicAction) {
         self.label  = Label(title, image: name)
         self.role   = role
         self.action = action
@@ -33,7 +33,7 @@ public struct LabeledRoleButton: View {
     ///   - name: The name of an `SF Symbol` icon.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    public init<S: StringProtocol>(_ title: S, systemImage name: String, role: ButtonRole?, action: @escaping () -> Void) {
+    public init<S: StringProtocol>(_ title: S, systemImage name: String, role: ButtonRole?, action: @escaping BasicAction) {
         self.label  = Label(title, systemImage: name)
         self.role   = role
         self.action = action
@@ -45,7 +45,7 @@ public struct LabeledRoleButton: View {
     ///   - symbol: The symbol representing an `SF Symbol` icon.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    public init<S: StringProtocol>(_ title: S, symbol: Symbol, role: ButtonRole?, action: @escaping () -> Void) {
+    public init<S: StringProtocol>(_ title: S, symbol: Symbol, role: ButtonRole?, action: @escaping BasicAction) {
         self.label  = Label(title, symbol: symbol)
         self.role   = role
         self.action = action
@@ -57,7 +57,7 @@ public struct LabeledRoleButton: View {
     ///   - name: The name of an image resource to lookup.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    public init(_ titleKey: LocalizedStringKey, image name: String, role: ButtonRole?, action: @escaping () -> Void) {
+    public init(_ titleKey: LocalizedStringKey, image name: String, role: ButtonRole?, action: @escaping BasicAction) {
         self.label  = Label(titleKey, image: name)
         self.role   = role
         self.action = action
@@ -69,7 +69,7 @@ public struct LabeledRoleButton: View {
     ///   - name: The name of an `SF Symbol` icon.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    public init(_ titleKey: LocalizedStringKey, systemImage name: String, role: ButtonRole?, action: @escaping () -> Void) {
+    public init(_ titleKey: LocalizedStringKey, systemImage name: String, role: ButtonRole?, action: @escaping BasicAction) {
         self.label  = Label(titleKey, systemImage: name)
         self.role   = role
         self.action = action
@@ -81,7 +81,7 @@ public struct LabeledRoleButton: View {
     ///   - symbol: The symbol representing an `SF Symbol` icon.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    public init(_ titleKey: LocalizedStringKey, symbol: Symbol, role: ButtonRole?, action: @escaping () -> Void) {
+    public init(_ titleKey: LocalizedStringKey, symbol: Symbol, role: ButtonRole?, action: @escaping BasicAction) {
         self.label  = Label(titleKey, symbol: symbol)
         self.role   = role
         self.action = action
@@ -89,7 +89,7 @@ public struct LabeledRoleButton: View {
     
     /// Creates a button with a destructive role, a title of `Delete` and the `􀈑` symbol.
     /// - Parameter action: The action for the button.
-    public static func delete(action: @escaping () -> Void) -> Self {
+    public static func delete(action: @escaping BasicAction) -> Self {
         LabeledRoleButton("Delete", symbol: .trash, role: .destructive, action: action)
     }
     

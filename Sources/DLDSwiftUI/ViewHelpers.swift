@@ -54,6 +54,24 @@ public extension View {
         .listStyle(style)
     }
     
+    func withClearButton(for text: Binding<String>) -> some View {
+        HStack {
+            self
+            
+            Button {
+                text.wrappedValue = ""
+            } label: {
+                Label("Clear", systemImage: "multiply.circle.fill")
+                    .foregroundColor(.secondary.opacity(0.5))
+                    .labelStyle(.iconOnly)
+            }
+            .hidden(if: text.wrappedValue.isEmpty)
+            #if os(macOS)
+            .buttonStyle(.borderless)
+            #endif
+        }
+    }
+    
     // MARK: - Padding
     func padding(horizontal: CGFloat?, vertical: CGFloat?) -> some View {
         self
@@ -127,15 +145,3 @@ public extension View {
         self.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
     }
 }
-
-#if os(iOS)
-public typealias NavBarDisplayMode = NavigationBarItem.TitleDisplayMode
-
-public extension View {
-    func navBarTitle(_ titleKey: LocalizedStringKey, displayMode: NavBarDisplayMode = .automatic) -> some View {
-        self
-            .navigationTitle(titleKey)
-            .navigationBarTitleDisplayMode(displayMode)
-    }
-}
-#endif
