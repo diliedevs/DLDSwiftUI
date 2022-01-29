@@ -32,3 +32,19 @@ public extension Section where Parent == Label<Text, Image>, Content: View, Foot
         self.init(header: Label(titleKey, symbol: symbol), content: content)
     }
 }
+
+public extension TabItemView {
+    init(_ titleKey: LocalizedStringKey, symbol: Symbol, tag: String?, @ViewBuilder content: @escaping () -> Content) {
+        self.titleText = Text(titleKey)
+        self.labelIcon = Image(symbol: symbol)
+        self.tag       = tag
+        self.content   = content
+    }
+    
+    init<S: StringProtocol>(_ title: S, symbol: Symbol, tag: String?, @ViewBuilder content: @escaping () -> Content) {
+        self.titleText = Text(title)
+        self.labelIcon = Image(symbol: symbol)
+        self.tag       = tag
+        self.content   = content
+    }
+}
