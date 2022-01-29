@@ -53,17 +53,3 @@ public struct TabItemView<Content: View>: View {
             }
     }
 }
-
-struct TabItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabView {
-            TabItemView("Title", systemImage: "house", tag: "home") {
-                Text("Some Home Content")
-            }
-            
-            TabItemView("Books", symbol: .booksVertical, tag: "books") {
-                Text("Some Books Content")
-            }
-        }
-    }
-}
