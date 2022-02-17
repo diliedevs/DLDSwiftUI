@@ -52,6 +52,16 @@ public extension LabelStyle where Self == VerticalLabelStyle {
     }
 }
 
+public extension View {
+    @ViewBuilder func labelStyle<ST: LabelStyle, SF: LabelStyle>(if condition: Bool, then trueCase: ST, else falseCase: SF) -> some View {
+        if condition {
+            self.labelStyle(trueCase)
+        } else {
+            self.labelStyle(falseCase)
+        }
+    }
+}
+
 @available(macOS, obsoleted: 11.3, message: "Use .labelStyle(.style) notation instead")
 @available(iOS, obsoleted: 14.5, message: "Use .labelStyle(.style) notation instead")
 public extension View {

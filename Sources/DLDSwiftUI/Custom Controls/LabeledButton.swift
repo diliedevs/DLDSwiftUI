@@ -132,4 +132,12 @@ public extension View {
     func easyButtonStyle(imageScale: Image.Scale = .medium, tint: Color? = nil) -> some View {
         self.modifier(EasyButtonStyle(buttonStyle: .automatic, labelStyle: .automatic, imageScale: imageScale, tint: tint))
     }
+    
+    @ViewBuilder func buttonStyle<ST: PrimitiveButtonStyle, SF: PrimitiveButtonStyle>(if condition: Bool, then trueCase: ST, else falseCase: SF) -> some View {
+        if condition {
+            self.buttonStyle(trueCase)
+        } else {
+            self.buttonStyle(falseCase)
+        }
+    }
 }
