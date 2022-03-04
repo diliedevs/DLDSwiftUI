@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// All the names of system images as defined in the `SF Symbols` application version `3.1 (63)`.
+/// All the names of system images as defined in the `SF Symbols` application version `3.2 (67)`.
 public enum Symbol: String, CaseIterable {
     
     // MARK: - A
@@ -31,6 +31,8 @@ public enum Symbol: String, CaseIterable {
     case airplayvideoBadgeExclamationmark = "airplayvideo.badge.exclamationmark"
     case airplayvideoCircle = "airplayvideo.circle"
     case airplayvideoCircleFill = "airplayvideo.circle.fill"
+    case airpodGen3Left = "airpod.gen3.left"
+    case airpodGen3Right = "airpod.gen3.right"
     case airpodLeft = "airpod.left"
     case airpodRight = "airpod.right"
     case airpodproLeft = "airpodpro.left"
@@ -40,6 +42,9 @@ public enum Symbol: String, CaseIterable {
     case airpodsChargingcaseFill = "airpods.chargingcase.fill"
     case airpodsChargingcaseWireless = "airpods.chargingcase.wireless"
     case airpodsChargingcaseWirelessFill = "airpods.chargingcase.wireless.fill"
+    case airpodsGen3 = "airpods.gen3"
+    case airpodsGen3ChargingcaseWireless = "airpods.gen3.chargingcase.wireless"
+    case airpodsGen3ChargingcaseWirelessFill = "airpods.gen3.chargingcase.wireless.fill"
     case airpodsmax
     case airpodspro
     case airpodsproChargingcaseWireless = "airpodspro.chargingcase.wireless"
@@ -483,6 +488,11 @@ public enum Symbol: String, CaseIterable {
     case battery50 = "battery.50"
     case battery75 = "battery.75"
     case beatsEarphones = "beats.earphones"
+    case beatsFitPro = "beats.fit.pro"
+    case beatsFitProChargingcase = "beats.fit.pro.chargingcase"
+    case beatsFitProChargingcaseFill = "beats.fit.pro.chargingcase.fill"
+    case beatsFitProLeft = "beats.fit.pro.left"
+    case beatsFitProRight = "beats.fit.pro.right"
     case beatsHeadphones = "beats.headphones"
     case beatsPowerbeats = "beats.powerbeats"
     case beatsPowerbeats3 = "beats.powerbeats3"
@@ -2627,6 +2637,7 @@ public enum Symbol: String, CaseIterable {
     case rectangleInsetTopleftFilled = "rectangle.inset.topleft.filled"
     case rectangleInsetToprightFilled = "rectangle.inset.topright.filled"
     case rectangleInsetToptrailingFilled = "rectangle.inset.toptrailing.filled"
+    case rectangleLeadinghalfFilled = "rectangle.leadinghalf.filled"
     case rectangleLeadinghalfInsetFilled = "rectangle.leadinghalf.inset.filled"
     case rectangleLeadinghalfInsetFilledArrowLeading = "rectangle.leadinghalf.inset.filled.arrow.leading"
     case rectangleLeadingthirdInsetFilled = "rectangle.leadingthird.inset.filled"
@@ -2721,6 +2732,7 @@ public enum Symbol: String, CaseIterable {
     case rectangleTophalfFilled = "rectangle.tophalf.filled"
     case rectangleTophalfInsetFilled = "rectangle.tophalf.inset.filled"
     case rectangleTopthirdInsetFilled = "rectangle.topthird.inset.filled"
+    case rectangleTrailinghalfFilled = "rectangle.trailinghalf.filled"
     case rectangleTrailinghalfInsetFilled = "rectangle.trailinghalf.inset.filled"
     case rectangleTrailinghalfInsetFilledArrowTrailing = "rectangle.trailinghalf.inset.filled.arrow.trailing"
     case rectangleTrailingthirdInsetFilled = "rectangle.trailingthird.inset.filled"
@@ -2888,10 +2900,13 @@ public enum Symbol: String, CaseIterable {
     case square3Layers3DDownBackward = "square.3.layers.3d.down.backward"
     case square3Layers3DDownForward = "square.3.layers.3d.down.forward"
     case square3Layers3DDownLeft = "square.3.layers.3d.down.left"
+    case square3Layers3DDownLeftSlash = "square.3.layers.3d.down.left.slash"
     case square3Layers3DDownRight = "square.3.layers.3d.down.right"
+    case square3Layers3DDownRightSlash = "square.3.layers.3d.down.right.slash"
     case square3Stack3D = "square.3.stack.3d"
     case square3Stack3DBottomFilled = "square.3.stack.3d.bottom.filled"
     case square3Stack3DMiddleFilled = "square.3.stack.3d.middle.filled"
+    case square3Stack3DSlash = "square.3.stack.3d.slash"
     case square3Stack3DTopFilled = "square.3.stack.3d.top.filled"
     case squareAndArrowDown = "square.and.arrow.down"
     case squareAndArrowDownFill = "square.and.arrow.down.fill"
@@ -3358,4 +3373,5 @@ public enum Symbol: String, CaseIterable {
     case zzz
     
 }
+
 
