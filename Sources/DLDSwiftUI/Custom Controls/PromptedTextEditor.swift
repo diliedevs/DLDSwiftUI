@@ -43,10 +43,10 @@ private extension PromptedTextEditor {
     var color: Color {
         if shouldShowPlaceholder {
             #if os(iOS)
-            return Color(uiColor: .placeholderText)
+            return Color(UIColor.placeholderText)
             #endif
             #if os(macOS)
-            return Color(nsColor: .placeholderTextColor)
+            return Color(NSColor.placeholderTextColor)
             #endif
         } else {
             return foregroundColor
