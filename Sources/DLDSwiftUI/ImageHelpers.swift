@@ -2,15 +2,13 @@
 //  ImageHelpers.swift
 //  DLDSwiftUI
 //
-//  Created by Dionne Lie-Sam-Foek on 30/01/2021.
-//  Copyright © 2021 DiLieDevs. All rights reserved.
+//  Created by Dionne Lie-Sam-Foek on 06/10/2022.
+//  Copyright © 2022 DiLieDevs. All rights reserved.
 //
 
 import SwiftUI
 
 public extension Image {
-    typealias Name = String
-    
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fit its parent.
     /// - Parameters:
     ///   - capInsets: The amount the edges should be inset, set to no specific amount by default.
@@ -27,7 +25,7 @@ public extension Image {
     ///   - resizingMode: The mode of resizing, set to `stretch` by default.
     func resizedToFit(width: CGFloat, alignment: Alignment = .center, capInsets: EdgeInsets = EdgeInsets(), resizingMode: Image.ResizingMode = .stretch) -> some View {
         self.resizedToFit(capInsets: capInsets, resizingMode: resizingMode)
-            .width(width, alignment: alignment)
+            .frame(width: width, alignment: alignment)
     }
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fit in a frame of the specified height and alignment.
     /// - Parameters:
@@ -37,7 +35,7 @@ public extension Image {
     ///   - resizingMode: The mode of resizing, set to `stretch` by default.
     func resizedToFit(height: CGFloat, alignment: Alignment = .center, capInsets: EdgeInsets = EdgeInsets(), resizingMode: Image.ResizingMode = .stretch) -> some View {
         self.resizedToFit(capInsets: capInsets, resizingMode: resizingMode)
-            .height(height, alignment: alignment)
+            .frame(height: height, alignment: alignment)
     }
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fit in a frame of the specified size and alignment.
     /// - Parameters:
@@ -79,7 +77,7 @@ public extension Image {
     ///   - resizingMode: The mode of resizing, set to `stretch` by default.
     func resizedToFill(width: CGFloat, alignment: Alignment = .center, capInsets: EdgeInsets = EdgeInsets(), resizingMode: Image.ResizingMode = .stretch) -> some View {
         self.resizedToFill(capInsets: capInsets, resizingMode: resizingMode)
-            .width(width, alignment: alignment)
+            .frame(width: width, alignment: alignment)
     }
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fill in a frame of the specified height and alignment.
     /// - Parameters:
@@ -89,7 +87,7 @@ public extension Image {
     ///   - resizingMode: The mode of resizing, set to `stretch` by default.
     func resizedToFill(height: CGFloat, alignment: Alignment = .center, capInsets: EdgeInsets = EdgeInsets(), resizingMode: Image.ResizingMode = .stretch) -> some View {
         self.resizedToFill(capInsets: capInsets, resizingMode: resizingMode)
-            .height(height, alignment: alignment)
+            .frame(height: height, alignment: alignment)
     }
     /// Returns the image configured to be resizable with the specified insets and resizing mode and scaled to fit in a frame of the specified size and alignment.
     /// - Parameters:
@@ -134,6 +132,7 @@ public extension NSImage {
         self.init(named: bundleName)!
     }
     
+    /// Returns the `NSImage` of the application icon.
     static var appIcon: NSImage { NSImage(bundleName: "AppIcon") }
 }
 #endif
