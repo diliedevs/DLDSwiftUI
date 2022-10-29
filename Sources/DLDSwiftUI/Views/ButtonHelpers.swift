@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@available(macOS 12.0, iOS 15.0.0, *)
 public extension Button where Label == SwiftUI.Label<Text, Image> {
     /// Creates a button with a label showing both a title and a resource image icon.
     /// - Parameters:
@@ -58,17 +59,72 @@ public extension Button where Label == SwiftUI.Label<Text, Image> {
     }
 }
 
+public extension Button where Label == SwiftUI.Label<Text, Image> {
+    /// Creates a button with a label showing both a title and a resource image icon.
+    /// - Parameters:
+    ///   - title: A string to be used as the label’s title.
+    ///   - name: The name of an image resource to lookup.
+    ///   - action: The action for the button.
+    init<S: StringProtocol>(_ title: S, image imageName: String, action: @escaping BasicAction) {
+        self.init(action: action) {
+            SwiftUI.Label(title, image: imageName)
+        }
+    }
+    
+    /// Creates a button with a label showing both a title and a `SF Symbols` icon.
+    /// - Parameters:
+    ///   - title: A string to be used as the label’s title.
+    ///   - name: The name of an `SF Symbols` icon.
+    ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
+    ///   - action: The action for the button.
+    init<S: StringProtocol>(_ title: S, systemImage imageName: String, action: @escaping BasicAction) {
+        self.init(action: action) {
+            SwiftUI.Label(title, systemImage: imageName)
+        }
+    }
+    
+    /// Creates a button with a label showing both a localizable title and a resource image icon.
+    /// - Parameters:
+    ///   - titleKey: A title generated from a localized string.
+    ///   - name: The name of an image resource to lookup.
+    ///   - action: The action for the button.
+    init(_ titleKey: LocalizedStringKey, image imageName: String, action: @escaping BasicAction) {
+        self.init(action: action) {
+            SwiftUI.Label(titleKey, image: imageName)
+        }
+    }
+    
+    /// Creates a button with a label showing both a localizable title and a `SF Symbols` icon.
+    /// - Parameters:
+    ///   - titleKey: A title generated from a localized string.
+    ///   - name: The name of an `SF Symbols` icon.
+    ///   - action: The action for the button.
+    init(_ titleKey: LocalizedStringKey, systemImage imageName: String, action: @escaping BasicAction) {
+        self.init(action: action) {
+            SwiftUI.Label(titleKey, systemImage: imageName)
+        }
+    }
+}
+
 public extension Button where Label == Text {
     /// Creates a button with the given to action to cancel out of something.
     /// - Parameter action: The action to take when the button is pressed.
     static func cancel(action: @escaping BasicAction) -> Self {
-        Button("Cancel", role: .cancel, action: action)
+        if #available(macOS 12.0, iOS 15.0.0, *) {
+            return Button("Cancel", role: .cancel, action: action)
+        } else {
+            return Button("Cancel", action: action)
+        }
     }
     
     /// Creates a button with the given to action to delete something.
     /// - Parameter action: The action to take when the button is pressed.
     static func delete(action: @escaping BasicAction) -> Self {
-        Button("Delete", role: .destructive, action: action)
+        if #available(macOS 12.0, iOS 15.0.0, *) {
+            return Button("Delete", role: .destructive, action: action)
+        } else {
+            return Button("Delete", action: action)
+        }
     }
 }
 
@@ -76,7 +132,11 @@ public extension Button where Label == SwiftUI.Label<Text, Image> {
     /// Creates a button with a destructive role, a title of `Delete` and the `􀈑` symbol.
     /// - Parameter action: The action for the button.
     static func delete(action: @escaping BasicAction) -> Self {
-        Button("Delete", systemImage: "trash", role: .destructive, action: action)
+        if #available(macOS 12.0, iOS 15.0.0, *) {
+            return Button("Delete", systemImage: "trash", role: .destructive, action: action)
+        } else {
+            return Button("Delete", systemImage: "trash", action: action)
+        }
     }
     
     /// Creates a button with a title of `Filter` and the `􀌈` symbol.
