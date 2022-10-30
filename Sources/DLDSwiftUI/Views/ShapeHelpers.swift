@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-extension Shape where Self == RoundedRectangle {
+public extension Shape where Self == RoundedRectangle {
     /// Returns a rounded rectangle with a corner radius of 5.
     static var stadium: some Shape { RoundedRectangle(cornerRadius: 5) }
 }
 
-extension InsettableShape where Self == RoundedRectangle {
+public extension InsettableShape where Self == RoundedRectangle {
     /// Returns a rounded rectangle with a corner radius of 5.
     static var stadium: some InsettableShape { RoundedRectangle(cornerRadius: 5) }
 }
