@@ -36,3 +36,55 @@ public extension View {
             .padding(.vertical, vertical)
     }
 }
+
+public extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, modifier: @escaping (Self) -> Content) -> some View {
+        if condition() {
+            modifier(self)
+        } else {
+            self
+        }
+    }
+    
+    func iOS<Content: View>(_ modifier: @escaping (Self) -> Content) -> some View {
+        #if os(iOS)
+        modifier(self)
+        #else
+        self
+        #endif
+    }
+    
+    func macOS<Content: View>(_ modifier: @escaping (Self) -> Content) -> some View {
+        #if os(macOS)
+        modifier(self)
+        #else
+        self
+        #endif
+    }
+}
+
+public extension View {
+    func debugPrint(_ value: @autoclosure () -> Any) -> some View {
+        #if DEBUG
+        print(value())
+        #endif
+        
+        return self
+    }
+    
+    func debugExecute(_ function: BasicAction) -> some View {
+        #if DEBUG
+        function()
+        #endif
+        
+        return self
+    }
+    
+    func debugExecute(_ function: (Self) -> Void) -> some View {
+        #if DEBUG
+        function(self)
+        #endif
+        
+        return self
+    }
+}
