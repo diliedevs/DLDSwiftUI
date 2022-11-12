@@ -35,6 +35,16 @@ public extension View {
             .padding(.horizontal, horizontal)
             .padding(.vertical, vertical)
     }
+    
+    func onPublish(of publisher: NotificationCenter.Publisher, perform action: @escaping BasicAction) -> some View {
+        self.onReceive(publisher) { _ in
+            action()
+        }
+    }
+    
+    func onPublish(of publisher: NotificationCenter.Publisher, perform action: @escaping (NotificationCenter.Publisher.Output) -> Void) -> some View {
+        self.onReceive(publisher, perform: action)
+    }
 }
 
 public extension View {
