@@ -41,10 +41,6 @@ public extension View {
             action()
         }
     }
-    
-    func onPublish(of publisher: NotificationCenter.Publisher, perform action: @escaping (NotificationCenter.Publisher.Output) -> Void) -> some View {
-        self.onReceive(publisher, perform: action)
-    }
 }
 
 public extension View {
@@ -74,6 +70,10 @@ public extension View {
 }
 
 public extension View {
+    func debugBorder(_ color: Color = .red) -> some View {
+        self.border(color, width: 2)
+    }
+    
     func debugPrint(_ value: @autoclosure () -> Any) -> some View {
         #if DEBUG
         print(value())
