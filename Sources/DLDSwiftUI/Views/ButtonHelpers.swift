@@ -170,7 +170,7 @@ public extension View {
     ///   - condition: The condition by which to decide which button style to apply to the view.
     ///   - trueStyle: The button style to apply when the given condition is true.
     ///   - falseStyle: The button style to apply when the given condition is false.
-    @ViewBuilder func buttonStyle<ST: PrimitiveButtonStyle, SF: PrimitiveButtonStyle>(if condition: Bool, the trueStyle: ST, else falseStyle: SF) -> some View {
+    @ViewBuilder func buttonStyle<ST: PrimitiveButtonStyle, SF: PrimitiveButtonStyle>(if condition: Bool, then trueStyle: ST, else falseStyle: SF) -> some View {
         if condition {
             self.buttonStyle(trueStyle)
         } else {
