@@ -9,7 +9,7 @@
 import SwiftUI
 
 // MARK: - Gauge Style
-@available(iOS 16.0, *)
+@available(macOS 13.0, iOS 16.0, *)
 extension ConditionalStyle: GaugeStyle where TrueStyle: GaugeStyle, FalseStyle: GaugeStyle {
     
     public func makeBody(configuration: GaugeStyleConfiguration) -> some View {
@@ -21,7 +21,7 @@ extension ConditionalStyle: GaugeStyle where TrueStyle: GaugeStyle, FalseStyle: 
     }
 }
 
-@available(iOS 16.0, *)
+@available(macOS 13.0, iOS 16.0, *)
 public extension GaugeStyle where Self == ConditionalStyle<any GaugeStyle, any GaugeStyle> {
     
     static func conditional<T: GaugeStyle, F: GaugeStyle>(if condition: Bool, then trueStyle: T, else falseStyle: F) -> ConditionalStyle<T, F> {
