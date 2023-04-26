@@ -25,6 +25,17 @@ public extension View {
         .listStyle(style)
     }
     
+    /// Embeds the receiving view in a form with the given form style
+    /// - Parameter style: The form style to apply to the form.
+    /// - Returns: The receiving view embedded in a form with the given style.
+    @available(macOS 13.0, iOS 16.0, *)
+    func inForm<FS: FormStyle>(style: FS = .automatic) -> some View {
+        Form {
+            self
+        }
+        .formStyle(style)
+    }
+    
     /// Adds the given amount of padding to the horizontal and vertical edges of the receiving view.
     /// - Parameters:
     ///   - horizontal: The amount of padding for the leading and trailing edges.
