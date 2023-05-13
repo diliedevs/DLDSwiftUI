@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 @available(macOS 12.0, iOS 15.0.0, *)
 public extension Button where Label == SwiftUI.Label<Text, Image> {
@@ -57,51 +58,28 @@ public extension Button where Label == SwiftUI.Label<Text, Image> {
             SwiftUI.Label(titleKey, systemImage: imageName)
         }
     }
-}
-
-public extension Button where Label == SwiftUI.Label<Text, Image> {
-    /// Creates a button with a label showing both a title and a resource image icon.
-    /// - Parameters:
-    ///   - title: A string to be used as the label’s title.
-    ///   - name: The name of an image resource to lookup.
-    ///   - action: The action for the button.
-    init<S: StringProtocol>(_ title: S, image imageName: String, action: @escaping BasicAction) {
-        self.init(action: action) {
-            SwiftUI.Label(title, image: imageName)
-        }
-    }
     
     /// Creates a button with a label showing both a title and a `SF Symbols` icon.
     /// - Parameters:
     ///   - title: A string to be used as the label’s title.
-    ///   - name: The name of an `SF Symbols` icon.
+    ///   - symbol: A `Safe SF Symbols` icon.
     ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    init<S: StringProtocol>(_ title: S, systemImage imageName: String, action: @escaping BasicAction) {
-        self.init(action: action) {
-            SwiftUI.Label(title, systemImage: imageName)
-        }
-    }
-    
-    /// Creates a button with a label showing both a localizable title and a resource image icon.
-    /// - Parameters:
-    ///   - titleKey: A title generated from a localized string.
-    ///   - name: The name of an image resource to lookup.
-    ///   - action: The action for the button.
-    init(_ titleKey: LocalizedStringKey, image imageName: String, action: @escaping BasicAction) {
-        self.init(action: action) {
-            SwiftUI.Label(titleKey, image: imageName)
+    init<S: StringProtocol>(_ title: S, symbol: SFSymbol, role: ButtonRole? = nil, action: @escaping BasicAction) {
+        self.init(role: role, action: action) {
+            SwiftUI.Label(title, systemSymbol: symbol)
         }
     }
     
     /// Creates a button with a label showing both a localizable title and a `SF Symbols` icon.
     /// - Parameters:
     ///   - titleKey: A title generated from a localized string.
-    ///   - name: The name of an `SF Symbols` icon.
+    ///   - symbol: A `Safe SF Symbols` icon.
+    ///   - role: An optional semantic role that describes the button. A value of nil means that the button doesn’t have an assigned role.
     ///   - action: The action for the button.
-    init(_ titleKey: LocalizedStringKey, systemImage imageName: String, action: @escaping BasicAction) {
-        self.init(action: action) {
-            SwiftUI.Label(titleKey, systemImage: imageName)
+    init(_ titleKey: LocalizedStringKey, symbol: SFSymbol, role: ButtonRole? = nil, action: @escaping BasicAction) {
+        self.init(role: role, action: action) {
+            SwiftUI.Label(titleKey, systemSymbol: symbol)
         }
     }
 }

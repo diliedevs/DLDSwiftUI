@@ -47,10 +47,8 @@ public extension View {
             .padding(.vertical, vertical)
     }
     
-    func onPublish(of publisher: NotificationCenter.Publisher, perform action: @escaping BasicAction) -> some View {
-        self.onReceive(publisher) { _ in
-            action()
-        }
+    func onPublish(of name: Notification.Name, center: NotificationCenter = .default, perform action: @escaping (NotificationCenter.Publisher.Output) -> Void) -> some View {
+        self.onReceive(center.publisher(for: name), perform: action)
     }
 }
 
@@ -60,6 +58,18 @@ public extension View {
             modifier(self)
         } else {
             self
+        }
+    }
+    
+    @ViewBuilder func conditional<TC: View, FC: View>(_ condition: @autoclosure () -> Bool, trueModifier: @escaping (Self) -> TC, falseModifier: ((Self) -> FC)? = nil) -> some View {
+        if condition() {
+            trueModifier(self)
+        } else {
+            if let falseModifier {
+                falseModifier(self)
+            } else {
+                self
+            }
         }
     }
     

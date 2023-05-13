@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DynamicColor
 
 public extension Color {
     /// Return the system black color with an opacity of `0.2`.
@@ -40,6 +41,11 @@ public extension Color {
     /// Returns the `UIColor` for the `SwiftUI Color`.
     var uiColor: UIColor { UIColor(self) }
     
+    /// Returns the color representation as a hexadecimal string, similar to this pattern `#f4003b`.
+    var hexString: String { uiColor.toHexString() }
+    /// Returns the color representation as a hexadecimal string without the hash `#` symbol, similar to this pattern `f4003b`.
+    var noHashHex: String { hexString.replacingOccurrences(of: "#", with: "") }
+    
     /// Returns the `UIColor` for the `SwiftUI Color` with the given opacity.
     /// - Parameter opacity: The amount of opacity to apply to the color.
     func uiColor(with opacity: CGFloat = 1) -> UIColor {
@@ -54,6 +60,11 @@ public extension Color {
 public extension Color {
     /// Returns the `NSColor` for the `SwiftUI Color`.
     var nsColor: NSColor { NSColor(self) }
+    
+    /// Returns the color representation as a hexadecimal string, similar to this pattern `#f4003b`.
+    var hexString: String { nsColor.toHexString() }
+    /// Returns the color representation as a hexadecimal string without the hash `#` symbol, similar to this pattern `f4003b`.
+    var noHashHex: String { hexString.replacingOccurrences(of: "#", with: "") }
     
     /// Returns the `NSColor` for the `SwiftUI Color` with the given opacity.
     /// - Parameter opacity: The amount of opacity to apply to the color.
