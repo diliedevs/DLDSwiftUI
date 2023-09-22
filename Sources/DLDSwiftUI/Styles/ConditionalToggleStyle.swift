@@ -8,20 +8,30 @@
 
 import SwiftUI
 
-extension ConditionalStyle: ToggleStyle where TrueStyle: ToggleStyle, FalseStyle: ToggleStyle {
-    
-    public func makeBody(configuration: ToggleStyleConfiguration) -> some View {
+public extension View {
+    @ViewBuilder func toggleStyle<TS: ToggleStyle, FS: ToggleStyle>(if condition: Bool, trueStyle: TS, falseStyle: FS) -> some View {
         if condition {
-            trueStyle.makeBody(configuration: configuration)
+            self.toggleStyle(trueStyle)
         } else {
-            falseStyle.makeBody(configuration: configuration)
+            self.toggleStyle(falseStyle)
         }
     }
 }
 
-public extension ToggleStyle where Self == ConditionalStyle<any ToggleStyle, any ToggleStyle> {
-    
-    static func conditional<T: ToggleStyle, F: ToggleStyle>(if condition: Bool, then trueStyle: T, else falseStyle: F) -> ConditionalStyle<T, F> {
-        ConditionalStyle(condition: condition, trueStyle: trueStyle, falseStyle: falseStyle)
-    }
-}
+//extension ConditionalStyle: ToggleStyle where TrueStyle: ToggleStyle, FalseStyle: ToggleStyle {
+//    
+//    public func makeBody(configuration: ToggleStyleConfiguration) -> some View {
+//        if condition {
+//            trueStyle.makeBody(configuration: configuration)
+//        } else {
+//            falseStyle.makeBody(configuration: configuration)
+//        }
+//    }
+//}
+
+//public extension ToggleStyle where Self == ConditionalStyle<any ToggleStyle, any ToggleStyle> {
+//    
+//    static func conditional<T: ToggleStyle, F: ToggleStyle>(if condition: Bool, then trueStyle: T, else falseStyle: F) -> ConditionalStyle<T, F> {
+//        ConditionalStyle(condition: condition, trueStyle: trueStyle, falseStyle: falseStyle)
+//    }
+//}
