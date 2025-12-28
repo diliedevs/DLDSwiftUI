@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/diliedevs/DLDFoundation", from: "1.0.0"),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "6.0.0"),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols", from: "7.0.0"),
         .package(url: "https://github.com/yannickl/DynamicColor", from: "5.0.0"),
     ],
     targets: [
